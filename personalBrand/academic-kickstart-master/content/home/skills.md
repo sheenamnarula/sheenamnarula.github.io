@@ -23,6 +23,7 @@ subtitle = ""
   [[feature]]
   icon = "camera-retro"
   icon_pack = "fa fa-graphql"
+  image = "./download.jpeg"
   name = "Graphql"
   description = "90%"
 
@@ -61,7 +62,5 @@ subtitle = ""
   icon_pack = "fa fa-music"
   name = "Dance and Music"
   description = "90%"
-
-{{< figure src="/media/spf13.jpg" title="Steve Francia" >}}
 
 +++

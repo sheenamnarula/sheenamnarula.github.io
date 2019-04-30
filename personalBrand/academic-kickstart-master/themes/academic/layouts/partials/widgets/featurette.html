@@ -14,6 +14,14 @@
     <p>{{ . | markdownify }}</p>
   </div>
   {{ end }}
+  
+  {{ with $page.Content }}
+  <div class="col-md-12">
+    <p>{{ . | markdownify }}</p>
+  </div>
+  {{ end }}
+  
+
 
   {{ range $page.Params.feature }}
   {{ $pack := or .icon_pack "fas" }}
@@ -22,7 +30,17 @@
     {{ $pack_prefix = "fa" }}
   {{ end }}
   <div class="col-12 col-sm-4">
-    {{ with .icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
+    {{ with .icon }}
+    <div class="featurette-icon">
+      <i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i>
+    </div>
+
+      {{ end }}
+
+      {{with .image}}
+      <img  class="featurette-icon" src={{.}} alt="Graphql alternate"/>
+      {{end}}
+
     <h3>{{ .name | markdownify | emojify }}</h3>
     {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
   </div>
