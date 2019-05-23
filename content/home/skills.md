@@ -27,32 +27,32 @@ subtitle = ""
   description = "90%"
 
   [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fa fa-music"
+  icon = "express"
+  icon_pack = "fab fa-js"
   name = "Express Js"
   description = "90%"
 
   [[feature]]
   icon = "camera-retro"
-  icon_pack = "fa fa-music"
+  icon_pack = "fab fa-js"
   name = "Hapi Js"
   description = "90%"
 
   [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fa fa-music"
+  icon = "meteor"
+  icon_pack = "sheecon"
   name = "Meteor"
   description = "90%"
 
   [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fa fa-music"
+  icon = "mongoDb"
+  icon_pack = "sheecon"
   name = "Mongodb"
   description = "90%"
 
   [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fa fa-music"
+  icon = "react"
+  icon_pack = "sheecon"
   name = "React with Redux"
   description = "70%"
 
