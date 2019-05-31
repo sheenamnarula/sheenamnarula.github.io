@@ -12,15 +12,6 @@ view = 3
 
 The cold war was a state of geopolitical tension after second world war between Eastern Bloc(The Soviet Union and its satellite states) and Western Bloc(the United States and its NATO Alies)
 
-THE NORTH ATLANTIC TREATY ORGANIZATION (NATO)
-The Cold War was in full swing, as the Soviet Union was rising to power, capturing satellite countries. Using their strong dynamic forces, the Soviet Union captured surrounding countries first to help protect them from any invasion. This tactic was used to imprison civilians and force them to join the Soviet military. As their armed forces greatly increased in numbers, other countries and nations feared that the Soviet Union would expand their control and take over other countries.
-
-In response to this, the North Atlantic Treaty Organization was formed. NATO is a formal alliance between the territories of North American and Europe. From its inception, its main purpose was to defend each other from the possibility of communist Soviet Union taking control of their nation. Many powerful countries joined NATO by the signing of the official document in 1949: Belgium, Great Britain, Italy, Iceland, Luxembourg, United States, Canada, Netherlands, Denmark, Norway and Portugal. In 1950, General Dwight D. Eisenhower was nominated and appointed as the first supreme allied commander. Since Eisenhower was from the United States, this allowed the U.S. to be a strong force in the organization. West Germany, Turkey and Greece joined by 1955.
-
-Today, NATO is ideally an outstanding way for the twenty-six different countries and nations to come together. As an organization, the leaders meet with one another to make decisions about security issues and defensive issues against allied attacks. Also, NATO has armed forces, made up of civilians of all twenty-six countries. They defend and aid countries in crisis, just like Darfur. The North Atlantic Council is made up on knowledgeable political and military leaders represented by each country. This council comes to a consensus on making important decisions on what political and military tactics to use, for daily activity.
-
----
-
 Cold war era - 1947 to 1989/1991.
 But actually it doesnot have any fix date.
 
@@ -59,6 +50,80 @@ So in this type of atmosphere, Wintson Churchill,the Prime Minister of England, 
 It was the name for the non-physical boundary dividing Europe into two separate areas from the end of World War II in 1945 until the end of the Cold War in 1991. The term symbolizes the efforts by the Soviet Union to block itself and its satellite states from open contact with the West and its allied states. On the east side of the Iron Curtain were the countries that were connected to or influenced by the Soviet Union, while on the west side were the countries that were allied to the United States or nominally neutral. Separate international economic and military alliances were developed on each side of the Iron Curtain.
 (West Germany was captured by America,France and Britain and East Germany was occupied by Soviet Union)
 
-Against this Iron Curtain, America opted for some policies to stop further expansion of Communism in Europe.These policies were :
+Against this Iron Curtain, America opted for some policies.
 
-1.  Containment Policy
+1.  Containment Policy: This policy is about stopping further expansion of Communism.
+
+2.  Marshall Plan for Resconstruction: America provided economic help to the countries which suffered a lot of destruction in war. In this way, according to marshall plan, it tried to establish capitalism in those countries.
+
+3.  Truman Doctrine,1947: According to this policy, US said that it would support every country which is against communism.It would provide economic,political and even military help to the countries which were against communism.That was why South Korea was supported by US in Korean War.
+
+4.  US also propped up many communist regimes throughout the world.
+
+## Incidents of Cold War:
+
+### Berlin Blockade,1948:
+
+At that time, West Berlin was under USA and East Berlin was under USSR. The USSR wanted to control entire Berlin.As Berlin was surrounded by USSR, so it stopped the supply route to west Berlin.But USA UK air dropped supplies to break the blockade to maintain west Berlin.For around one year, with the help of two lakh planes, they maintained west Berlin by providing food, fuel etc.So at last, USSR dropped the blockade because it was not successful as air dropped supplies were quite helpful in providing stuff to people.
+
+In 1949, Germany was officially divided into two parts East Germany(under USSR) and West Germany(under US)
+
+### 1949 Events:
+
+#### THE NORTH ATLANTIC TREATY ORGANIZATION (NATO)
+
+Berlin blockade happened in 1948 because of which America was quite aware that it has to do something about USSR.So USA and some other countries formed NATO.A breif description of NATO is here :
+
+The Cold War was in full swing, as the Soviet Union was rising to power, capturing satellite countries. Using their strong dynamic forces, the Soviet Union captured surrounding countries first to help protect them from any invasion. This tactic was used to imprison civilians and force them to join the Soviet military. As their armed forces greatly increased in numbers, other countries and nations feared that the Soviet Union would expand their control and take over other countries.
+
+In response to this, the North Atlantic Treaty Organization was formed. NATO is a formal alliance between the territories of North American and Europe. From its inception, its main purpose was to defend each other from the possibility of communist Soviet Union taking control of their nation. Many powerful countries joined NATO by the signing of the official document in 1949: Belgium, Great Britain, Italy, Iceland, Luxembourg, United States, Canada, Netherlands, Denmark, Norway and Portugal. In 1950, General Dwight D. Eisenhower was nominated and appointed as the first supreme allied commander. Since Eisenhower was from the United States, this allowed the U.S. to be a strong force in the organization. West Germany, Turkey and Greece joined by 1955.
+
+Today, NATO is ideally an outstanding way for the twenty-six different countries and nations to come together. As an organization, the leaders meet with one another to make decisions about security issues and defensive issues against allied attacks. Also, NATO has armed forces, made up of civilians of all twenty-six countries. They defend and aid countries in crisis, just like Darfur. The North Atlantic Council is made up on knowledgeable political and military leaders represented by each country. This council comes to a consensus on making important decisions on what political and military tactics to use, for daily activity.
+
+#### Result of civil war in CHINA
+
+In China Civil War, Communist won and China fell under Communist power except Taiwan.
+
+#### Nuclear Weapon by USSR
+
+In 1949, USSR tested its first nuclear weapon. USA was already having nuclear weapon as we all know about Hiroshima and Nagasaki incident.USA always convinced countries to be with it by showing its nuclear power but now USSR was also having nuclear weapons.This was the main reason why this cold war did not turn out to be hot war.
+
+Many communist govts were established in east and central Europe
+
+By 1950, it was quite clear that the two sides were at war without open conflict and the basically it was an ideological war between communism and capitalism.
+
+### Nuclear Angle
+
+First time in human history,humans were having that power which could destroy human race and earth like 50 times.
+Initially, nuclear bombs needed to be carried in planes to attack like in case of Hiroshima and Nagasaki, America sent its planes carrying nuclear bombs to attack.But during this cold war,BALLISTIC MISSILES were developed which could carry nuclear bombs over thousands of killometres.ICBM(Inter Continent Ballistic Missiles) assured mutual assured destrucion which is termed as MAD, means if USA attacked USSR, then in return USSR could also attack USA and both had to suffer same losses.
+
+### Korean war(1950-1953)
+
+It was a first proxy war between these two nations.After world war II, North Korea was under USSR and South Korea was under USA.In 1950,there was a war between North Korea and South Korea.
+USSR and PRC backed North Korea and attacked South Korea.
+USA and allies came to aid south and a stalemate ensued.(stalemate means no party won and border was still the same).
+After this a Cease fire agreement was signed between North and South Korea.
+
+### Domino Theory
+
+After Korean war, domino theory came into being.
+![Example image](/img/domino-theory.jpeg)
+
+According to this theory, communism is like a domino.If one country fell in a domino, then due to its effect other countries would also fall.Like in 1950, communism was established in China,north Vietnam,Korea,Laos and USA was afraid of that communism could also be established in Thailand, Malaysia, India, Burma etc.So USA thought to stop the domino effect, they need to start a proxy war and Vietnam war was the result of this thought.
+
+### 1950s Escalation
+
+In decade of 1950, cold war was at its height.
+1953 - Stalin died and a new leader for USSR was Nikita Khrushchev and in USA elections, Eisenhower was chosen by public as a new President.
+
+1955- USSR signed a WARSAW pact with communist countries agains NATO.
+
+At this time, along with arms race, Space race also began.First satellite and first person to space was sent by Soviet Union but in moon race, America won.
+
+In 1950s, USSR was supporting communist rebels in Latin America,Asia and Africa.
+
+USA showed a different face to world in 1950s. Just to stop communism, it also supported dictatorship in many countries like Iran,Chile,Brazil,Dominica etc.For this support, USA's reputation got affected because USA was a champion of democracy but it supported dictatorship to stop communism.
+
+1956- Hungarian Revolution crushed by soviets by sending military.It was the first time, USSR sent its army in other country to supress revolution.
+
+1956- Suez crisis - There was a Suez canal which existed in Egypt but was under England because it built this canal. Egyp govt. wanted to nationalize it. So at that time, England, France and Isryl attacked on Egypt and
