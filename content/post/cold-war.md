@@ -126,4 +126,101 @@ USA showed a different face to world in 1950s. Just to stop communism, it also s
 
 1956- Hungarian Revolution crushed by soviets by sending military.It was the first time, USSR sent its army in other country to supress revolution.
 
-1956- Suez crisis - There was a Suez canal which existed in Egypt but was under England because it built this canal. Egyp govt. wanted to nationalize it. So at that time, England, France and Isryl attacked on Egypt and
+1956- Suez crisis - There was a Suez canal which existed in Egypt but was under England because it built this canal. Egypt govt. wanted to nationalize it. So at that time, England, France and Isryl attacked on Egypt but at the mean time USSR participated and backed Egypt.USSR threatened that it could be a nuclear war.At that USA, pressurized England, France and Isryl to take back their armies from Egypt.
+
+1950s- War in Indochina raged on
+War was going on in France colonies and Communist governments supported the local people there against France government.South Vietnam was supported by America.
+
+When there were two groups in the world, a third group also came into being which was of Non-Aligned countries whose leaders were India, Egypt, Indonesia and Yugoslavia.Non-aligned movement came into being in 1961.According to this, the countries which are part of this movement were neither supporting US nor USSR.
+
+With this a terminology,THREE WORLD ORDER came into being. According to this First World was Capitalist Countries(Western Bloc),Second World was Communism(Eastern Bloc) and Third World included Non-aligned countries.
+
+### 1960s
+
+##### 1960- U2 plane incident
+
+1960 - USA sent a plane over USSR to spy.That plane got crashed and pilot was arrested by USSR.There was a summit going to be held in Paris to find a solution of cold war.Due to this incident, USSR was annoyed and that summit got failed.
+
+1961- Berlin wall was constructed by East Germany to stop people who were moving secretly to West Germany because they did not want to live under communist government.
+
+1962- Cuban crisis
+Cuban missile crisis, (October 1962), major confrontation that brought the United States and the Soviet Union close to war over the presence of Soviet nuclear-armed missiles in Cuba.
+
+Having promised in May 1960 to defend Cuba with Soviet arms, the Soviet premier Nikita Khrushchev assumed that the United States would take no steps to prevent the installation of Soviet medium- and intermediate-range ballistic missiles in Cuba. Such missiles could hit much of the eastern United States within a few minutes if launched from Cuba. The United States learned in July 1962 that the Soviet Union had begun missile shipments to Cuba. By August 29 new military construction and the presence of Soviet technicians had been reported by U.S. U-2 spy planes flying over the island, and on October 14 the presence of a ballistic missile on a launching site was reported.
+
+After carefully considering the alternatives of an immediate U.S. invasion of Cuba (or air strikes of the missile sites), a blockade of the island, or further diplomatic maneuvers, Pres. John F. Kennedy decided to place a naval “quarantine,” or blockade, on Cuba to prevent further Soviet shipments of missiles. Kennedy announced the quarantine on October 22 and warned that U.S. forces would seize “offensive weapons and associated material” that Soviet vessels might attempt to deliver to Cuba. During the following days, Soviet ships bound for Cuba altered course away from the quarantined zone. As the two superpowers hovered close to the brink of nuclear war, messages were exchanged between Kennedy and Khrushchev amidst extreme tension on both sides. On October 28 Khrushchev capitulated, informing Kennedy that work on the missile sites would be halted and that the missiles already in Cuba would be returned to the Soviet Union. In return, Kennedy committed the United States never to invade Cuba. Kennedy also secretly promised to withdraw the nuclear-armed missiles that the United States had stationed in Turkey in previous years. In the following weeks both superpowers began fulfilling their promises, and the crisis was over by late November. Cuba’s communist leader, Fidel Castro, was infuriated by the Soviets’ retreat in the face of the U.S. ultimatum but was powerless to act.
+
+1962 Sano Soviet separation
+China got separated from USSR saying that ideology behind the communist government of USSR is different from the ideology it is following being a communist country.
+But both continued to support gorillas in Vietnam war.
+
+1968- Praque spring reforms crushed by USSR.
+
+Vietnam war carried on at a brutal scale.Finally,North Vietnam won backed by USSR won in 1975.
+
+### 1970s De-Escalation
+
+1972- US and China established diplomatic relations, trade relations and America gave recognition to China
+
+1973- Detente(Cooperation) between USA and USSR
+Under this, SALT(Strategic Arms Limitation Talks) was successful in which two topics were discussed :
+-Reducing nuclear missiles
+-Reducing anti ballistic missiles
+
+After SALT, tension between two nations was significanly reduced. But in 1979, USSR send troops to Afghanistan to help newly formed Communist govt. which annoyed USA as USA thought that USSR was following its old policy of expansion. So in return, USA supported Mujaheedin(rebels in Afghanistan) against USSR.So this again ended cooperation between USSR and USA.
+
+### 1980s
+
+In 1979, due to end in cooperation between USSR and USA, USA boycotted olympics held in Moscow in 1980 and USSR boycotted olympics held in Los Angeles in 1984.
+
+1981 -
+In 1981,Ronald Regan became the President of USA and he spent on military immenselt which could not be competed by USSR due to it failing economy.
+
+USSR was shocked about USA's Strategic Defensive Initiative plan under which satellites were supposed to be equipped with nuclear missiles.This was named as STAR WARS by people.But later this plan was not finalized by USA.
+
+1983-
+Large NATO military exercise made USSR to think about USA was gonna attack USSR and brought the world on brink if nuclear annihilation.
+
+South Korean civilian plane shot down by USSR giving excuse that this plane was sent to spy in USSR.
+
+1985- Mikhail Gorbachev becomes Gen. Sec.of Communist party in USSR. After his arriavl, cold war started to end.
+
+##### The end of Cold War
+
+Main reason- reforms brought by Gorbachev and economy of USSR.
+
+The communist economy simply could not keep up with high growth rates of capitalist ones because of non-existence of privatization of industries.To increase the economic growth, Gorbachev brougt reforms which were :
+
+Glasnost : It included:
+
+1. Openness
+2. Freedom of speech
+3. Easing of media censorship(now news from America and other parts of the world could be seen by people)
+4. Earlier records declassified by RTI
+
+Perestroika
+Restructuring/Reformation was done under which Soviet Political and Economic structure was improved.
+
+The most important part of Political reforms was Elections.Elections was not mean that there were different parties but it was selection of communist party members by people, initially which was done by higher authorities of communist party.
+
+Foreign Business and privately owned business were allowed under economic reforms.
+
+###Demand of Independence
+After these reforms,all over Europe(the satellite states or warsaw states), started to demand independence and change in communist government.
+
+In 1989, Peaceful revolutions were made to get rid of communism in most countries except Romania where the leader,Nicolae Ceaușescu was shot dead by people.
+
+Unlike in Hungary and Prague, this time there was no military suppression by Soviet Union to crush these revolutions.
+
+Berlin wall fell and East and West Germany got united.
+
+In response to Gorbachev's reforms, USA started talks for de escalation,limiting nuclear weapoins and removal of army from Afghanistan.
+
+In Dec. 1991, USSR is dissolved due to internal revolution and all 15 sub national soviets form their soverign countries.
+
+### Aftermath of Cold War
+
+- Unipolar world- USA the only Superpower
+- Russian Economy suffered badly
+- Conflicts in Balkan states - Yugoslavia(1992 - 97(approx.))
+- The threat of nuclear war is still there but very much less than during the span of cold war.
