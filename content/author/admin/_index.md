@@ -15,7 +15,7 @@ role = "Backend Developer"
 #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
 
 # Short bio (displayed in user profile at end of posts)
-bio = "My research interests include distributed robotics, mobile computing and programmable matter."
+bio = "My interests are doing things which i find interesting at particular moment."
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email = ""
