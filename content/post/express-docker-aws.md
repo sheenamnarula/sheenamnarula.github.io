@@ -17,9 +17,113 @@ First of all, make a project in node-express-mongo and dockerise it. Here I am g
 
 I am taking as an amazon account is already set up to use the Amazon Elastic Container Service(ECS).
 
-Steps to deploy app -
+Steps to deploy two containers(app + database) -
 
 1. Dockerise app (link for previous article)
-2. We need to keep image of app somewhere from where it is pulled while starting container.We can do two things here. Either we can use Docker Hub or we can use Amazon Elastic Container Registry(ECR) service. In this tutorial, i am using ECR to keep created images.
+2. Create Registry(ECR)
+3. Upload app image to ECR
+4. Create task definition with two containers
+5. Create a cluster
+6. Create a service and run it.
 
-So basically step starts from here, get a repository url by creating a repository
+## Practical Explanation of steps :
+
+### 1. Dockerise app
+
+        for this you can check this article : (link for pervious article)
+
+### 2. Create Registry(ECR)
+
+We need to keep image of app somewhere from where it is pulled while starting container.We can do two things here. Either we can use Docker Hub or we can use AWS Elastic Container Registry(ECR) service. In this tutorial,i am using ECR to keep the created images.
+
+Log in to web console into your prefered region and choose ECR from services.
+
+![Example image](/img/aws-images/choose-ECR.png)
+
+There create a repository to store image of your app.After creating repository, you will see a button "View Push Commands" on right side.
+(image 2)
+
+On clicking that button, you will get some commands that will be used to push image of app to this repository.
+(image 3)
+
+### 3 . Upload image to ECR
+
+        Run the commands, to push the image to ECR.
+
+#### Command 1 . \$(aws ecr get-login --no-include-email --region ap-south-1)
+
+This will help you to login to aws through cli.(Note : Install aws-cli to run these commands.)
+(Link to install aws cli : )
+(image 4 - logging in)
+
+#### Command 2 . docker build -t node-express .
+
+        This command will help you in building image of your app. Run this command in the folder containing the app. -t is to give the name to your image. You can also customize it according to your preference so that you can find the created image easily.
+        (image - 3)
+
+#### Command 3. docker tag node-express:latest 597357263415.dkr.ecr.ap-south-1.amazonaws.com/node-express:latest
+
+        This command is used to tag your created image to the ECR.
+        (image-4)
+
+#### Command 5 . docker push 597357263415.dkr.ecr.ap-south-1.amazonaws.com/node-express:latest
+
+        This command is used to push the created image to ECR. This command can take few minutes to execute.
+        (image-5)
+
+### 3. Create Task definitions
+
+        As we run docker commands like docker run in docker cli, here task definitions are used for this purpose. Every task consists of - docker containers details, port mappings, network details, environment variables, volumes if any, and the most important thing, image of app.
+        Choose Task Definitions in left navigation pane.
+        (image 6)
+        Here we will define two containers in one task as running app willl contain api container and database container.
+
+#### First Container : Api Container
+
+        Copy the url of your image that we pushed in ECR in second step.
+        (image 7)
+        Click on Create New Task Definition and choose EC2  and then click on next.
+        Here you will get a form to define your task. Fill out the required fields and click on Add Containers.
+        (image 8)
+
+        In add container form, specify the container name  and memory required.
+        Then give the port mappings i.e host port and container port.
+        image -*9
+        Give Environment variables using Key-value pair(In this project, we are using mongo db as environment variable)
+        image - 10
+        In network links, you can declare the linking of other containers with this container simply by following syntax - othercontainer: alias
+        (image 11)
+
+        Here we are running database in second container and we are gonna name it as mongo-container(yet to be defined)
+        We are linking this container to database container.
+        Then click on create and you will get your api container created.
+
+#### Second Container : Database Container
+
+        For this container, we need a mongo image and this can be directly pulled from Docker Hub. Here is the required url for mongo image : registry.hub.docker.com/library/mongo:latest
+        Now we need to be careful while naming second container as we have mentioned in the linking of first container as "mongo-container". So for correct linking, we need to keep the name of our db container as "mongo-container"
+
+        (image 12,13)
+
+        and also mention the hostname as mongo-container.
+
+        Now click on create option and you will get your task definition created with two containers.
+        image(14)
+
+### 4. Create Cluster :
+
+        Cluster is where container runs.
+
+        Choose Clusters from left navigation pane and choose create cluster.Creating cluster is like setting up an EC2 instance.After clicking on create cluster, choose EC2+Linux and create cluster with options vpc - create new vpc group, instance type- m4.large and number of required instances.
+        image 15
+
+        Now you can see the created cluster, on clicking that cluster, you can see tabs for task definition, ec2 instance and services.
+
+### 5. Create Service :
+
+        Service is used to run your defined tasks in cluster. Click on create service and fill the required fields.
+        Choose the task definition that have been created in step 3 and run the service.
+
+        Initially it will show pending state and soon it will be in running state.
+
+        When it is in running state, you can go to cluster and then click on ec2 instance. On clicking that, details of that instance will appear. From there copy the public dns and paste it in browser and you can see your app in running state.
