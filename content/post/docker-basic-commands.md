@@ -66,3 +66,51 @@ This command will give us all containers(including those containers as well whic
         $ docker container ls -a
 
 #### Commands to stop container
+
+##### Stop a specific container
+      $ docker container stop [ID]
+
+##### Stop all containers
+      $ docker stop $(docker ps -aq)
+
+
+##### Remove a specific container
+      $ docker container rm -f [ID]
+
+
+##### Remove multiple containers
+      $ docker container rm [ID] [ID] [ID]
+
+##### Remove all containers
+      $ docker rm $(docker ps -aq)
+
+#### Get logs of container
+      $ docker container logs [NAME]
+
+#### List processes running in container
+      $ docker container top [NAME]
+
+#### View Container Info
+      $ docker container inspect [NAME]
+
+#### Performance stats
+      $ docker container stats [NAME]
+
+
+### Commands required for Images
+
+##### List images
+      $ docker images
+
+##### Build Image
+      $ docker build -t {image name}
+
+##### Remove a specific image
+      $ docker image rm [IMAGE]
+
+##### Remove all images
+      $ docker rmi $(docker images -a -q)
+
+#### Image tagging and pushing to docker hub
+
+
