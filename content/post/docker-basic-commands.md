@@ -68,49 +68,109 @@ This command will give us all containers(including those containers as well whic
 #### Commands to stop container
 
 ##### Stop a specific container
+
       $ docker container stop [ID]
 
 ##### Stop all containers
+
       $ docker stop $(docker ps -aq)
 
-
 ##### Remove a specific container
+
       $ docker container rm -f [ID]
 
-
 ##### Remove multiple containers
+
       $ docker container rm [ID] [ID] [ID]
 
 ##### Remove all containers
+
       $ docker rm $(docker ps -aq)
 
 #### Get logs of container
+
       $ docker container logs [NAME]
 
 #### List processes running in container
+
       $ docker container top [NAME]
 
 #### View Container Info
+
       $ docker container inspect [NAME]
 
 #### Performance stats
+
       $ docker container stats [NAME]
 
-
-### Commands required for Images
+## Commands required for Images
 
 ##### List images
+
       $ docker images
 
 ##### Build Image
-      $ docker build -t {image name}
+
+      $ $ docker image build -t [REPONAME] .
+
+##### Pull Image
+
+      $ docker pull [IMAGE]
 
 ##### Remove a specific image
+
       $ docker image rm [IMAGE]
 
 ##### Remove all images
+
       $ docker rmi $(docker images -a -q)
 
 #### Image tagging and pushing to docker hub
 
+Tags are labels that point to an Image
 
+##### Tagging an Existing Image
+
+      $ docker image tag {old name} {new tag name}
+
+##### Upload to docker hub
+
+      $ docker image push {imageTag}
+
+##### Note : If pushing operation is denied, do login in docker using
+
+        $ docker login
+
+## Docker Networks
+
+#### Get Port
+
+      $ docker container port [NAME]
+
+#### List Networks
+
+      $ docker network ls
+
+#### Inspect Network
+
+     $ docker network inspect [NETWORK_NAME]
+
+#### Create network
+
+    $ docker network create [NETWORK_NAME]
+
+#### Create container on network
+
+    $ docker container run -d --name [NAME] --network [NETWORK_NAME] [IMAGE_NAME]
+
+#### Connect existing container to network
+
+    $ docker network connect [NETWORK_NAME] [CONTAINER_NAME]
+
+#### Disconnect container from network
+
+    $ docker network disconnect [NETWORK_NAME] [CONTAINER_NAME]
+
+#### Detach network from container
+
+    $ docker network disconnect
