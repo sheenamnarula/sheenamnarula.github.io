@@ -111,7 +111,7 @@ This command will give us all containers(including those containers as well whic
 
 ##### Build Image
 
-      $ $ docker image build -t [REPONAME] .
+      $ docker image build -t [REPONAME] .
 
 ##### Pull Image
 
