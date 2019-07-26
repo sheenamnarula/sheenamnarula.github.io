@@ -70,6 +70,8 @@ To manage more than one container we will go for a tool named Compose. Compose i
 
 Here is the code for docker compose file and explanation of each line of code :
 
+# Explanation of Docker Compose file :
+
 # version: "3" -
 
     This line refers to the docker compose file format version.
