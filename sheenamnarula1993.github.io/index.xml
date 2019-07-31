@@ -1,15 +1,762 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Academic</title>
+    <title>Sheenam Narula</title>
     <link>http://sheenamnarula1993.github.io/</link>
-    <description>Recent content on Academic</description>
+    <description>Recent content on Sheenam Narula</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jun 2019 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0530</lastBuildDate>
     
 	    <atom:link href="http://sheenamnarula1993.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Import Vs Require</title>
+      <link>http://sheenamnarula1993.github.io/post/import-require/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/import-require/</guid>
+      <description>
+
+&lt;h5 id=&#34;syntax-of-import-export&#34;&gt;Syntax of import/export :&lt;/h5&gt;
+
+&lt;p&gt;file : exportVar.js&lt;/p&gt;
+
+&lt;p&gt;export const m = 1 ;&lt;/p&gt;
+
+&lt;p&gt;file : importVar.js&lt;/p&gt;
+
+&lt;p&gt;import {m} from exportVar.js&lt;/p&gt;
+
+&lt;h5 id=&#34;syntax-of-require&#34;&gt;Syntax of require :&lt;/h5&gt;
+
+&lt;p&gt;file : exportVar.js&lt;/p&gt;
+
+&lt;p&gt;const m = 1;&lt;/p&gt;
+
+&lt;p&gt;module.exports = m ;&lt;/p&gt;
+
+&lt;p&gt;file: importVar.js&lt;/p&gt;
+
+&lt;p&gt;const m = require(&amp;lsquo;./exportVar.js&amp;rsquo;)&lt;/p&gt;
+
+&lt;h3 id=&#34;loading-strategy&#34;&gt;Loading Strategy :&lt;/h3&gt;
+
+&lt;p&gt;Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules.
+But in case of require(), synchronous loading of modules takes place.
+It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&amp;rsquo;t wait for first module to be loaded completely.But in case of require, loading of second module will start after loading of first module is completed.&lt;/p&gt;
+
+&lt;p&gt;This is the key difference between import/export and require.&lt;/p&gt;
+
+&lt;p&gt;To get more deep in to this, we need to know how ES6 structure is working and how it is different from Common js.&lt;/p&gt;
+
+&lt;p&gt;The key difference between the Common JS and ES6 modules is when to know the shape of module.&lt;/p&gt;
+
+&lt;p&gt;In Common JS, when a module is exported, the steps performed before execution is given in this figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/common-js-steps.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here the common mistake that most of the developers make in understanding the loading step.
+In loading step, it is determined that what kind of thing is pointed by absolute path that is obtained on completion of resolution step.If it is Node.js native module, then dynamic linking of module is decided. On the other hand, if it is JSON file, the content is loaded in memory for further use.
+Here is the trick, in wrapper step, before evaluation, the loaded Javasacript is wrapped in a function. For e.g.&lt;/p&gt;
+
+&lt;p&gt;In file , example.js&lt;/p&gt;
+
+&lt;p&gt;const m = 1;&lt;/p&gt;
+
+&lt;p&gt;module.exports.m = m;&lt;/p&gt;
+
+&lt;p&gt;code is actually wrapped and passed to evaluation in below function format :&lt;/p&gt;
+
+&lt;p&gt;function (exports, require, module, **filename, **dirname) {
+const m = 1;
+module.exports.m = m;
+}&lt;/p&gt;
+
+&lt;p&gt;Here the exports is a parameter for wrapper function and it is a normal javascript object. So when the wrapper function is evaluated, it returns the exports object which is then used as a result of require(). The main point to note here is that, there is no way to determine as what kind of module is being exported by Common JS until the evaluation of wrapper.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, if we use import/export i.e. ES6 feature, the equivalent code of above example is :&lt;/p&gt;
+
+&lt;p&gt;In file , example.js&lt;/p&gt;
+
+&lt;p&gt;export const m = 1;&lt;/p&gt;
+
+&lt;p&gt;import {m} from &amp;lsquo;./example.js&amp;rsquo;&lt;/p&gt;
+
+&lt;p&gt;In this case, the shape of m is actually determined at the parsing step i.e before evaluation step. Actually, while parsing, and before evaluation, a Module Record is created, where a static listing of modules that have been exported in code are listed and verified. That means, it is verified first whether the exported m exists or not and link between import file and exported module i.e. m is eastablished. Only after creation of this module record, code is actually evaluated.
+Here the key point is, before even evaluation of code, the shape of module is known or we can say that, import/export is resolved before evaluation of code.&lt;/p&gt;
+
+&lt;h2 id=&#34;challenge-for-node-js&#34;&gt;Challenge for Node.js :&lt;/h2&gt;
+
+&lt;p&gt;Here is the challenge for Node.js comes up when exported module is not an ESM i.e ECMASCRIPT Module but a Common JS module because while importing with import statement or according to ES6 structure, shape of module should be known before evaluation but in case of Common JS module it becomes impossible to determine shape of code before evaluation step due to wrapper function.&lt;/p&gt;
+
+&lt;p&gt;To resolve this challenge, one proposal came up in which it was proposed that if a module is ESM module, then it will be directly added to list of Module Record but if it is not i.e if it is a Common JS module, then rather than giving error or giving up, the verification step will be left in pending state and a process of evaluation of that module will be executed. After getting confirmation of existence of that module, Module Record will be created.&lt;/p&gt;
+
+&lt;p&gt;But again for the implementation of this proposal, Node js requires some mechanism to identify whether the module is ESM or Common JS Module. Various approaches have been suggested but Michael Jackson Script is supposed to be accepted.&lt;/p&gt;
+
+&lt;h3 id=&#34;michael-jackson-script&#34;&gt;Michael Jackson Script :&lt;/h3&gt;
+
+&lt;p&gt;In this a new file extension *.mjs is supposed to be introduced for ESM modules.
+Right now, Node is distinguishing between the modules like this :&lt;/p&gt;
+
+&lt;p&gt;.node files : native modules&lt;/p&gt;
+
+&lt;p&gt;.js : Common JS modules&lt;/p&gt;
+
+&lt;p&gt;.json : JSON files&lt;/p&gt;
+
+&lt;p&gt;Now *.mjs will specify that the module is ESM and it should be loaded with the right mechanism.
+The key point here is by knowing the extensions of file, loading mechanism will be selected. For Common JS module, evaluation of module will be done first so that verification of existence can be done.&lt;/p&gt;
+
+&lt;p&gt;E.g. There are two files common.js and esm.mjs&lt;/p&gt;
+
+&lt;p&gt;import c from &amp;lsquo;./common.js&amp;rsquo; will be treated as Common js module&lt;/p&gt;
+
+&lt;p&gt;import e from &amp;lsquo;./esm.mjs&amp;rsquo; will be treated as ESM module&lt;/p&gt;
+
+&lt;h2 id=&#34;what-to-do-if-i-want-to-use-es6-import-export-feature-in-project&#34;&gt;What to do if i want to use ES6 import/export feature in project?&lt;/h2&gt;
+
+&lt;h4 id=&#34;answer-is-babel&#34;&gt;Answer is Babel&lt;/h4&gt;
+
+&lt;p&gt;If we want to use import/export feature of ES6, we need to use babel which transpiles code in Common JS. Here is a point which needs to be understood that Babel only converts the syntax to Common JS syntax so that it can be resolved by Node js, but implementation is according to ESM only.&lt;/p&gt;
+
+&lt;p&gt;Example: If we see named imports like&lt;/p&gt;
+
+&lt;p&gt;import {a,b} from &amp;lsquo;ab&amp;rsquo;;&lt;/p&gt;
+
+&lt;p&gt;This syntax will work only if ab is an ESM. But if it is Common JS module, it is not possible to use this syntax as shape of code can&amp;rsquo;t be determined until evaluation is done in this case.&lt;/p&gt;
+
+&lt;p&gt;But here BABEL does a perfect job for us by converting ES6 syntax to Common JS syntax and we get the required implementation.&lt;/p&gt;
+
+&lt;h2 id=&#34;significance-of-using-es6-structure&#34;&gt;Significance of using ES6 structure :&lt;/h2&gt;
+
+&lt;p&gt;In case of ES6 structure, the first step of loading the contents of file from disk is quite similar but may happen asynchronously. When the content of files is available, they are parsed. While parsing, the shape of exported module is determined and linked to respective import.That means all exports and imports will know their targets before evaluation itself i.e. they are resolved before execution step and that too happen asynchronously.
+In node.js terms, we can say that loading scripts, resolution of import and export and evaluation of module code occur over multiple turns of the event loop.&lt;/p&gt;
+
+&lt;h3 id=&#34;practical-example&#34;&gt;Practical Example :&lt;/h3&gt;
+
+&lt;p&gt;module a and b, both does not exist. b is imported using require and a is imported using import. Now due to use of require, existence of b is not verified and code does not throw error for non-existence of b. But in case of module a, existence of a is verified and code throws error for a at very early stage i.e at parsing step only.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/example-import-require.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/error-import-require.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Node-Docker-Aws Part-2</title>
+      <link>http://sheenamnarula1993.github.io/post/express-docker-aws-2/</link>
+      <pubDate>Sat, 29 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-2/</guid>
+      <description>
+
+&lt;p&gt;I am assuming that an amazon account is already set up to use the Amazon Elastic Container Service(ECS).&lt;/p&gt;
+
+&lt;p&gt;Steps to deploy two containers(app + database) -&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Dockerise app&lt;/li&gt;
+&lt;li&gt;Create Registry(ECR)&lt;/li&gt;
+&lt;li&gt;Upload app image to ECR&lt;/li&gt;
+&lt;li&gt;Create task definition with two containers&lt;/li&gt;
+&lt;li&gt;Create a cluster&lt;/li&gt;
+&lt;li&gt;Create a service and run it.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;practical-explanation-of-steps&#34;&gt;Practical Explanation of steps :&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-dockerise-app&#34;&gt;1. Dockerise app&lt;/h3&gt;
+
+&lt;p&gt;for this you can check this practice project : &lt;a href=&#34;https://github.com/sheenamnarula/node-graphql-docker-aws&#34; target=&#34;_blank&#34;&gt;https://github.com/sheenamnarula/node-graphql-docker-aws&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-create-registry-ecr&#34;&gt;2. Create Registry(ECR)&lt;/h3&gt;
+
+&lt;p&gt;We need to keep image of app somewhere from where it is pulled while starting container.We can do two things here. Either we can use Docker Hub or we can use AWS Elastic Container Registry(ECR) service. In this tutorial,i am using ECR to keep the created images.&lt;/p&gt;
+
+&lt;p&gt;Log in to web console into your prefered region and choose ECR from services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/choose-ECR.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There create a repository to store image of your app.After creating repository, you will see a button &amp;ldquo;View Push Commands&amp;rdquo; on right side.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/button-view-commands.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On clicking that button, you will get some commands that will be used to push image of app to this repository.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/push-commands.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-upload-image-to-ecr&#34;&gt;3 . Upload image to ECR&lt;/h3&gt;
+
+&lt;p&gt;Run the commands, to push the image to ECR.&lt;/p&gt;
+
+&lt;h4 id=&#34;command-1&#34;&gt;Command 1.&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;    aws ecr get-login --no-include-email --region ap-south-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will help you to login to aws through cli.(Note : Install aws-cli to run these commands.)
+( Link to install aws cli : &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html&#34; target=&#34;_blank&#34;&gt;https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html&lt;/a&gt; )&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/aws-login.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;command-2&#34;&gt;Command 2.&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  docker build -t node-express .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will help you in building image of your app. Run this command in the folder containing the app. -t is to give the name to your image. You can also customize it according to your preference so that you can find the created image easily.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/aws-login.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;command-3&#34;&gt;Command 3.&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;     docker tag node-express:latest 597357263415.dkr.ecr.ap-south-1.amazonaws.com/node-express:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command is used to tag your created image to the ECR.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/build-image.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;command-4&#34;&gt;Command 4 .&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;     docker push 597357263415.dkr.ecr.ap-south-1.amazonaws.com/node-express:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command is used to push the created image to ECR. This command can take few minutes to execute.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/pushing-image.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-create-task-definitions&#34;&gt;3. Create Task definitions&lt;/h3&gt;
+
+&lt;p&gt;As we run docker commands like docker run in docker cli, here task definitions are used for this purpose. Every task consists of - docker containers details, port mappings, network details, environment variables, volumes if any, and the most important thing, image of app.
+Choose Task Definitions in left navigation pane.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/task-definition.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we will define two containers in one task as running app willl contain api container and database container.&lt;/p&gt;
+
+&lt;h4 id=&#34;first-container-api-container&#34;&gt;First Container : Api Container&lt;/h4&gt;
+
+&lt;p&gt;Copy the url of your image that we pushed in ECR in second step.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/image-url.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click on Create New Task Definition and choose EC2 and then click on next.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/ec2-selection-task-def.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here you will get a form to define your task.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/form-1-taskdef.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fill out the required fields and click on Add Containers.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/add-container-button.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In add container form, specify the container name and memory required.
+Then give the port mappings i.e host port and container port.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/container-1-port.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Give Environment variables using Key-value pair(In this project, we are using mongo db as environment variable)
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/env-variables.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In network links, you can declare the linking of other containers with this container simply by following syntax - othercontainer: alias
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/link.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we are running database in second container and we are gonna name it as mongo-container(yet to be defined)
+We are linking this container to database container.
+Then click on create and you will get your api container created.&lt;/p&gt;
+
+&lt;h4 id=&#34;second-container-database-container&#34;&gt;Second Container : Database Container&lt;/h4&gt;
+
+&lt;p&gt;For this container, we need a mongo image and this can be directly pulled from Docker Hub. Here is the required url for mongo image : registry.hub.docker.com/library/mongo:latest&lt;/p&gt;
+
+&lt;p&gt;Now we need to be careful while naming second container as we have mentioned in the linking of first container as &amp;ldquo;mongo-container&amp;rdquo;. So for correct linking, we need to keep the name of our db container as &amp;ldquo;mongo-container&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/container-2.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and also mention the hostname as mongo-container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/hostname.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now click on create option and you will get your task definition created with two containers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/added-containers.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-create-cluster&#34;&gt;4. Create Cluster :&lt;/h3&gt;
+
+&lt;p&gt;Cluster is where container runs.&lt;/p&gt;
+
+&lt;p&gt;Choose Clusters from left navigation pane and choose create cluster.Creating cluster is like setting up an EC2 instance.After clicking on create cluster, choose EC2+Linux and create cluster with options vpc - create new vpc group,instance type- m4.large and number of required instances.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/create-cluster-button.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/selecting-ec2-linux-cluster.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Configuration of cluster :
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/configure-cluster.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/configure-cluster-2.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can see the created cluster, on clicking that cluster, you can see tabs for task definition, ec2 instance and services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/created-cluster.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;5-create-service&#34;&gt;5. Create Service :&lt;/h3&gt;
+
+&lt;p&gt;Service is used to run your defined tasks in cluster.
+Click on create service and fill the required fields.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/configure-service.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/configure-service-2.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Creating service :
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/creating-service.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/created-service.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose the task definition that have been created in step 3 and run the service.&lt;/p&gt;
+
+&lt;p&gt;Initially it will show pending state and soon it will be in running state.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/pending-status.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it is in running state, you can go to cluster and then click on ec2 instance.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/running-status.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On clicking that, details of that instance will appear. From there copy the public dns.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/ec2-public-dns-url.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Paste the copied address in browser and you can see your app in running state.
+&lt;img src=&#34;http://sheenamnarula1993.github.io/img/aws-images/working-example.png&#34; alt=&#34;Example image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Node-Docker-Aws Part-1</title>
+      <link>http://sheenamnarula1993.github.io/post/express-docker-aws-1/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-1/</guid>
+      <description>
+
+&lt;p&gt;First of all, make a project in node-express-mongo and dockerise it. Here I am giving a github link of a basic node-express app made along with graphql as this has become my favourite language because of its advantage of providing independence to front-end developers.&lt;/p&gt;
+
+&lt;h4 id=&#34;github-link-for-dockerised-app-https-github-com-sheenamnarula-node-graphql-docker-aws&#34;&gt;Github link for dockerised app : &lt;a href=&#34;https://github.com/sheenamnarula/node-graphql-docker-aws&#34; target=&#34;_blank&#34;&gt;https://github.com/sheenamnarula/node-graphql-docker-aws&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h1 id=&#34;docker-file&#34;&gt;Docker File&lt;/h1&gt;
+
+&lt;p&gt;Lets understand first, what is the meaning of lines written in the docker file.&lt;/p&gt;
+
+&lt;h2 id=&#34;from-node-8-9-0&#34;&gt;From node:8.9.0 -&lt;/h2&gt;
+
+&lt;p&gt;This line specifies the base image.Every docker file starts with a FROM instruction. As we are writing here for node app, so we need to set a node environmnent for the app. Here node:&lt;version&gt; is the base image along with the required version for our app ie. 8.9.0&lt;/p&gt;
+
+&lt;h2 id=&#34;workdir-app&#34;&gt;WORKDIR /app -&lt;/h2&gt;
+
+&lt;p&gt;This line refers to a directory in which we are going to keep our application files.Basically WORKDIR sets a directory where another commands like COPY, RUN, CMD, ADD can be run. In short, it is providing an entry point of app directory.&lt;/p&gt;
+
+&lt;h2 id=&#34;copy-package-json&#34;&gt;COPY package*.json ./ -&lt;/h2&gt;
+
+&lt;p&gt;To start a project or run a project, we need to install node modules and as we know in a node app, package.json is a file where dependencies of project is documented. So we are copying package.json in working directory so that further instructions can install node modules using this file. Here package* refers to package.json and package.lock.json files.&lt;/p&gt;
+
+&lt;h2 id=&#34;run-npm-install&#34;&gt;RUN npm install&lt;/h2&gt;
+
+&lt;h2 id=&#34;run-npm-install-nodemon-babel-cli-babel-preset-env&#34;&gt;RUN npm install nodemon babel-cli babel-preset-env&lt;/h2&gt;
+
+&lt;p&gt;These both lines contain RUN command. After copying package.json in work directory that is suppose to be entry point of our source files,using RUN command we are installing node modules and required dependencies for our project. Basically RUN command is used for the command that we run in a terminal and then it commits a new image which is further used by next instructions of docker file&lt;/p&gt;
+
+&lt;h2 id=&#34;expose-3007&#34;&gt;EXPOSE 3007&lt;/h2&gt;
+
+&lt;p&gt;This line is very important to understand as it defines which port of container is exposed.When we give any port with this command, that means that port of container is exposed.Means if we want to access app, we have to write the hostname simply i.e we need to write port 80 on browser. But if we write publish port in docker run command with expose port that means the app will be accesed through published port. In short, EXPOSE is used to open port for network but publish is used to map the opened port to public accessible port.&lt;/p&gt;
+
+&lt;h2 id=&#34;copy-app&#34;&gt;COPY . /app -&lt;/h2&gt;
+
+&lt;p&gt;Here we are copying the all content of app to our container working directory so that app can be run.&lt;/p&gt;
+
+&lt;h2 id=&#34;cmd-npm-run-start&#34;&gt;CMD npm run start -&lt;/h2&gt;
+
+&lt;p&gt;This line refers to executing the command that is required to start the project.&lt;/p&gt;
+
+&lt;h3 id=&#34;difference-between-run-and-cmd&#34;&gt;Difference between RUN and CMD -&lt;/h3&gt;
+
+&lt;p&gt;Here is an important difference between RUN and CMD :&lt;/p&gt;
+
+&lt;h4 id=&#34;run&#34;&gt;RUN -&lt;/h4&gt;
+
+&lt;p&gt;Basically RUN command triggers when we are building docker image. After RUN command, image is committed and next command uses that committed image.&lt;/p&gt;
+
+&lt;h4 id=&#34;cmd&#34;&gt;CMD -&lt;/h4&gt;
+
+&lt;p&gt;Basically CMD command triggers when we launch the created docker image.Dockerfile can have only one CMD command and it can be overriden while starting a container i.e. executing docker run $image $other_command&lt;/p&gt;
+
+&lt;p&gt;This is all about a docker file. Environment variables can also be included using ENV command.
+Now this is all about one container which will contain app. But here database required is mongo db and we also need a container for mongo db.&lt;/p&gt;
+
+&lt;p&gt;NOTE : It is possible to run mongo db and app in one container but it will create problem in scaling because if we need to scale app, thereby we will be scaling mongo db as well and moreover, it is difficult to maintain same data availability for all container apps in this case. So we will have one container for mongo db service following microservice architecture i.e. every service is running independently.&lt;/p&gt;
+
+&lt;p&gt;To manage more than one container we will go for a tool named Compose. Compose is a tool that is used to define and run multi-container docker applications.In this, a YAML file is used to configure multiple containers of application services.Then with a single command, we can create and start all the services using yaml configuration file.&lt;/p&gt;
+
+&lt;p&gt;Here is the code for docker compose file and explanation of each line of code :&lt;/p&gt;
+
+&lt;h1 id=&#34;explanation-of-docker-compose-file&#34;&gt;Explanation of Docker Compose file :&lt;/h1&gt;
+
+&lt;h2 id=&#34;version-3&#34;&gt;version: &amp;ldquo;3&amp;rdquo; -&lt;/h2&gt;
+
+&lt;p&gt;This line refers to the docker compose file format version.&lt;/p&gt;
+
+&lt;h2 id=&#34;services&#34;&gt;services: -&lt;/h2&gt;
+
+&lt;p&gt;This line refers to the start of container configurations.A service definition contains configuration that is applied to each container started for that service.&lt;/p&gt;
+
+&lt;h2 id=&#34;app&#34;&gt;app:&lt;/h2&gt;
+
+&lt;p&gt;This line refers to the name of your service.&lt;/p&gt;
+
+&lt;h2 id=&#34;container-name-docker-node-mongo&#34;&gt;container_name: docker-node-mongo&lt;/h2&gt;
+
+&lt;p&gt;By default, a random name is generated. To generate a meaningful name, we use container_name parameter in config.&lt;/p&gt;
+
+&lt;h2 id=&#34;restart-always&#34;&gt;restart: always&lt;/h2&gt;
+
+&lt;p&gt;By default behaviour of container is that it never restarts. By setting restart to always, we are making container to opt restarting behaviour.&lt;/p&gt;
+
+&lt;h2 id=&#34;build&#34;&gt;build: .&lt;/h2&gt;
+
+&lt;p&gt;This option is used when we have to make an image from a docker file. Relative path is given in this option so that docker can look for Dockerfile according to given path to build image.&lt;/p&gt;
+
+&lt;h2 id=&#34;ports&#34;&gt;ports:&lt;/h2&gt;
+
+&lt;h2 id=&#34;80-3007&#34;&gt;- &amp;ldquo;80:3007&amp;rdquo;&lt;/h2&gt;
+
+&lt;p&gt;This option is used to mention the exposed port of container. HOST:CONTAINER is short syntax to metion ports.&lt;/p&gt;
+
+&lt;p&gt;The long form syntax allows the configuration of additional fields that can’t be expressed in the short form.&lt;/p&gt;
+
+&lt;p&gt;target: the port inside the container
+published: the publicly exposed port
+protocol: the port protocol (tcp or udp)
+mode: host for publishing a host port on each node, or ingress for a swarm mode port to be load balanced.
+ports:
+-target: 80
+published: 8080
+protocol: tcp
+mode: host&lt;/p&gt;
+
+&lt;h2 id=&#34;depends-on&#34;&gt;depends_on:&lt;/h2&gt;
+
+&lt;h2 id=&#34;mongo&#34;&gt;- mongo&lt;/h2&gt;
+
+&lt;p&gt;This line express the dependencies of one container to other. To start a container,the containers on which it is dependent, will be started first&lt;/p&gt;
+
+&lt;h2 id=&#34;mongo-1&#34;&gt;mongo:&lt;/h2&gt;
+
+&lt;h2 id=&#34;container-name-mongo&#34;&gt;container_name: mongo&lt;/h2&gt;
+
+&lt;h2 id=&#34;image-mongo&#34;&gt;image: mongo :&lt;/h2&gt;
+
+&lt;p&gt;This will check the mongo image if it is available locally and in case of unavailability, image will be downloaded from docker hub(github for docker images).&lt;/p&gt;
+
+&lt;h2 id=&#34;ports-1&#34;&gt;ports:&lt;/h2&gt;
+
+&lt;h2 id=&#34;27017-27017&#34;&gt;- &amp;ldquo;27017:27017&amp;rdquo;&lt;/h2&gt;
+
+&lt;p&gt;Here is on more command like depends_on i.e. links. But link is deprecated now. depends_on gives us start order but links just to link one container to another.But now, if containers are placed in same network, they can connect with each other by using their name.&lt;/p&gt;
+
+&lt;p&gt;Now by running a single command, &amp;ldquo;docker-compose up&amp;rdquo;, we can see two containers running one is our app container and other is mongo container.&lt;/p&gt;
+
+&lt;p&gt;Note: In project here is one commented line , &lt;code&gt;mongodb://mongo:27017/expGraphqlDemo&lt;/code&gt;. In this mongo is container name and 27017 is container&amp;rsquo;s published port.But for deployment purpose, we are making it configurable and will pass as environment variable while deployment.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Basic Docker Commands</title>
+      <link>http://sheenamnarula1993.github.io/post/docker-basic-commands/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/docker-basic-commands/</guid>
+      <description>
+
+&lt;h3 id=&#34;show-commands-and-management-commands&#34;&gt;Show commands and Management commands&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;docker-version&#34;&gt;Docker version :&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;show-info-like-number-of-containers&#34;&gt;Show info like number of containers&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;commands-required-for-containers&#34;&gt;Commands required for Containers&lt;/h2&gt;
+
+&lt;h4 id=&#34;command-to-run-a-container-in-foreground&#34;&gt;Command to run a container in foreground :&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container run -it -p 80:80 {image name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example : docker container run -it -p 80:80 nginx&lt;/p&gt;
+
+&lt;h4 id=&#34;command-to-run-a-container-in-backround&#34;&gt;Command to run a container in backround :&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container run -d -p 80:80 {image name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;short-hand-command&#34;&gt;Short hand command&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container run -d -p 80:80 {image name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;naming-custom-names-to-container&#34;&gt;Naming custom names to container&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container run -p 80:80 --name {container name} {image name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example : docker container run -d -p 80:80 &amp;ndash;name nginx-server nginx&lt;/p&gt;
+
+&lt;h3 id=&#34;purpose-of-run-in-command&#34;&gt;Purpose of &amp;ldquo;run&amp;rdquo; in command :&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It actually looks for image in local cache.&lt;/li&gt;
+&lt;li&gt;If image is not found, it looks into Docker Hub where default image repo may exist(its like github for docker images).&lt;/li&gt;
+&lt;li&gt;It pulls it down from there and stores into local image cache.&lt;/li&gt;
+&lt;li&gt;Starts in a new container.&lt;/li&gt;
+&lt;li&gt;As we know syntax for port specification is HOST:CONTAINER port. So here we can access on port 80.&lt;/li&gt;
+&lt;li&gt;We can also access it on any port by changing host port. For e.g. , if we want access on port 3000, then we need to write here 3000:80.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;commands-for-listing-containers&#34;&gt;Commands for listing containers&lt;/h4&gt;
+
+&lt;p&gt;These two commands gives us running containers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ docker ps
+    $ docker container ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will give us all containers(including those containers as well which are not running).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ docker container ls -a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;commands-to-stop-container&#34;&gt;Commands to stop container&lt;/h4&gt;
+
+&lt;h5 id=&#34;stop-a-specific-container&#34;&gt;Stop a specific container&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container stop [ID]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;stop-all-containers&#34;&gt;Stop all containers&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker stop $(docker ps -aq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remove-a-specific-container&#34;&gt;Remove a specific container&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container rm -f [ID]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remove-multiple-containers&#34;&gt;Remove multiple containers&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container rm [ID] [ID] [ID]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remove-all-containers&#34;&gt;Remove all containers&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker rm $(docker ps -aq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;get-logs-of-container&#34;&gt;Get logs of container&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container logs [NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;list-processes-running-in-container&#34;&gt;List processes running in container&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container top [NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;view-container-info&#34;&gt;View Container Info&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container inspect [NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;performance-stats&#34;&gt;Performance stats&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container stats [NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;commands-required-for-images&#34;&gt;Commands required for Images&lt;/h2&gt;
+
+&lt;h5 id=&#34;list-images&#34;&gt;List images&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker images
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;build-image&#34;&gt;Build Image&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker image build -t [REPONAME] .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;pull-image&#34;&gt;Pull Image&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker pull [IMAGE]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remove-a-specific-image&#34;&gt;Remove a specific image&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker image rm [IMAGE]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remove-all-images&#34;&gt;Remove all images&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker rmi $(docker images -a -q)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;image-tagging-and-pushing-to-docker-hub&#34;&gt;Image tagging and pushing to docker hub&lt;/h4&gt;
+
+&lt;p&gt;Tags are labels that point to an Image&lt;/p&gt;
+
+&lt;h5 id=&#34;tagging-an-existing-image&#34;&gt;Tagging an Existing Image&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker image tag {old name} {new tag name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;upload-to-docker-hub&#34;&gt;Upload to docker hub&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker image push {imageTag}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;note-if-pushing-operation-is-denied-do-login-in-docker-using&#34;&gt;Note : If pushing operation is denied, do login in docker using&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ docker login
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;docker-networks&#34;&gt;Docker Networks&lt;/h2&gt;
+
+&lt;h4 id=&#34;get-port&#34;&gt;Get Port&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker container port [NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;list-networks&#34;&gt;List Networks&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ docker network ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;inspect-network&#34;&gt;Inspect Network&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt; $ docker network inspect [NETWORK_NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;create-network&#34;&gt;Create network&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker network create [NETWORK_NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;create-container-on-network&#34;&gt;Create container on network&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker container run -d --name [NAME] --network [NETWORK_NAME] [IMAGE_NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;connect-existing-container-to-network&#34;&gt;Connect existing container to network&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker network connect [NETWORK_NAME] [CONTAINER_NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;disconnect-container-from-network&#34;&gt;Disconnect container from network&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker network disconnect [NETWORK_NAME] [CONTAINER_NAME]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;detach-network-from-container&#34;&gt;Detach network from container&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker network disconnect
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala Part-2</title>
+      <link>http://sheenamnarula1993.github.io/post/scalaprojectstructure/</link>
+      <pubDate>Thu, 20 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/scalaprojectstructure/</guid>
+      <description>&lt;p&gt;.idea/— contains IntelliJ’s project specific settings files. According to JetBrains, normally there is no need to edit the contents of this folder.&lt;/p&gt;
+
+&lt;p&gt;build.sbt — contains build definition of the project. For example, project name, project version, scalaVersion, libraryDependencies, etc. Note that this file is written in Scala.&lt;/p&gt;
+
+&lt;p&gt;project/—because build.sbt is written in Scala, we need to build build.sbt. Therefore, this folder contains all the files needed for building build.sbt.&lt;/p&gt;
+
+&lt;p&gt;project/build.properties — this file contains build definition of build.sbt. For example, it defines sbt version.&lt;/p&gt;
+
+&lt;p&gt;project/target/— contains artifacts from building build.sbt.&lt;/p&gt;
+
+&lt;p&gt;src/—this is where we put our source files. sbt uses the same directory structure as Maven for source files by default. Other directories in src/ will be ignored in build time.&lt;/p&gt;
+
+&lt;p&gt;src/main/scala — contains main .scala files&lt;/p&gt;
+
+&lt;p&gt;src/main/java — contains main .java files&lt;/p&gt;
+
+&lt;p&gt;src/main/resources — contains main files other than .scala/.java files&lt;/p&gt;
+
+&lt;p&gt;src/test/scala — contains test .scala files&lt;/p&gt;
+
+&lt;p&gt;src/test/java — contains test .java files&lt;/p&gt;
+
+&lt;p&gt;src/test/resources — contains test files other than .scala/.java files&lt;/p&gt;
+
+&lt;p&gt;target/— contains artifacts from building the project&lt;/p&gt;
+
+&lt;p&gt;println(&amp;ldquo;Hello World&amp;rdquo;)
+Where should we chuck it?&lt;/p&gt;
+
+&lt;p&gt;Normally when you run a Scala sbt project, it will use the main function as the entry point to run the project. So another question — where should we chuck the main function?&lt;/p&gt;
+
+&lt;p&gt;Because sbt needs to call the main function from an object, the answer is that we write it in a Scala object like this:&lt;/p&gt;
+
+&lt;p&gt;object HelloWorldMain {
+def main(args: Array[String]): Unit = {
+println(&amp;ldquo;Hello World&amp;rdquo;)
+}
+}
+So, let’s create a package called com.helloworld (alternatively you can use your domain name in reverse order) in src/main/scala.&lt;/p&gt;
+
+&lt;p&gt;Then right-click on the package and select New -&amp;gt; Scala Class. We will name the class HelloWorldMain. Before you click OK, remember to change Kind from Class to Object for the reason we mentioned earlier.&lt;/p&gt;
+
+&lt;p&gt;You can add the code snippet we discussed earlier in the file.&lt;/p&gt;
+
+&lt;p&gt;Build and Run the project
+Now you should be able to see two green arrows next to your main function. Clicking either of them will build and run the project.&lt;/p&gt;
+
+&lt;p&gt;Then you will see the “Hello World” text printed out in the Run tool window in Intellij.&lt;/p&gt;
+
+&lt;p&gt;And the build artifact can be found in target/scala-2.12/classes.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala Part-1</title>
+      <link>http://sheenamnarula1993.github.io/post/scala/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/scala/</guid>
+      <description>&lt;p&gt;SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.&lt;/p&gt;
+
+&lt;p&gt;When you write small programs that consist of only one, or just two or three source files, then it&amp;rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.&lt;/p&gt;
+
+&lt;p&gt;But when you start working on a bigger project with dozens or maybe even hundreds of source files, then it becomes too tedious to compile all those source files manually. You will then want to use a build tool to manage compiling all those source files.&lt;/p&gt;
+
+&lt;p&gt;sbt is such a tool. There are other tools too, some other well-known build tools that come from the Java world are Ant and Maven.&lt;/p&gt;
+
+&lt;p&gt;How it works is that you create a project file that describes what your project looks like; when you use sbt, this file will be called build.sbt. That file lists all the source files your project consists of, along with other information about your project. Sbt will read the file and then it knows what to do to compile the complete project.&lt;/p&gt;
+
+&lt;p&gt;Besides managing your project, some build tools, including sbt, can automatically manage dependencies for you. This means that if you need to use some libraries written by others, sbt can automatically download the right versions of those libraries and include them in your project for you.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at how to use published libraries to add extra functionality to our apps.&lt;/p&gt;
+
+&lt;p&gt;Open up build.sbt and add the following line:
+libraryDependencies += &amp;ldquo;org.scala-lang.modules&amp;rdquo; %% &amp;ldquo;scala-parser-combinators&amp;rdquo; % &amp;ldquo;1.1.0&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Here, libraryDependencies is a set of dependencies, and by using +=, we’re adding the scala-parser-combinators dependency to the set of dependencies that sbt will go and fetch when it starts up. Now, in any Scala file, you can import classes, objects, etc, from scala-parser-combinators with a regular import.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Cold War</title>
@@ -274,7 +1021,7 @@ Restructuring/Reformation was done under which Soviet Political and Economic str
     <item>
       <title>Basic Electronics Part-1</title>
       <link>http://sheenamnarula1993.github.io/post/basic-electronics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0530</pubDate>
       
       <guid>http://sheenamnarula1993.github.io/post/basic-electronics/</guid>
       <description>
@@ -361,65 +1108,84 @@ What does this contain due to which phone&amp;rsquo;s battery is charging and i 
     </item>
     
     <item>
-      <title>Basic Electronics Part-2</title>
-      <link>http://sheenamnarula1993.github.io/post/basic-electronics-part-2/</link>
+      <title></title>
+      <link>http://sheenamnarula1993.github.io/post/containerization-vs-vm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://sheenamnarula1993.github.io/post/basic-electronics-part-2/</guid>
-      <description>
-
-&lt;h4 id=&#34;no-definitions-only-understanding&#34;&gt;(NO DEFINITIONS ,ONLY UNDERSTANDING)&lt;/h4&gt;
-
-&lt;p&gt;In basic electronics Part-2, I explained about the charge carriers,&amp;ldquo;Electrons&amp;rdquo;.After rubbing, these get knocked off and get stationary.
-But now the question is how we actually get non-stop flow of electricity that we actually use in daily life.&lt;/p&gt;
-
-&lt;p&gt;For this, we need to know some facts about materials.&lt;/p&gt;
-
-&lt;p&gt;As every material is made up of atoms but not with the same type of atoms. With some types of materials, such as metals, the outermost electrons in the atoms are so loosely bound that they chaotically move in the space between the atoms of that material by nothing more than the influence of room-temperature heat energy. Because these virtually unbound electrons are free to leave their respective atoms and float around in the space between adjacent atoms, they are often called free electrons.
-In other types of materials such as glass, the atoms’ electrons have very little freedom to move around. While external forces such as physical rubbing can force some of these electrons to leave their respective atoms and transfer to the atoms of another material, they do not move between atoms within that material very easily.&lt;/p&gt;
-
-&lt;p&gt;This relative mobility of electrons within a material is known as electric conductivity.Materials with high electron mobility (many free electrons) are called conductors, while materials with low electron mobility (few or no free electrons) are called insulators.&lt;/p&gt;
-
-&lt;p&gt;It should also be understood that some materials experience changes in their electrical properties under different conditions. Glass, for instance, is a very good insulator at room temperature but becomes a conductor when heated to a very high temperature.&lt;/p&gt;
-</description>
+      <guid>http://sheenamnarula1993.github.io/post/containerization-vs-vm/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>India-US Relations</title>
-      <link>http://sheenamnarula1993.github.io/post/india-us-relations/</link>
+      <title>KUBERNETES</title>
+      <link>http://sheenamnarula1993.github.io/post/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://sheenamnarula1993.github.io/post/india-us-relations/</guid>
-      <description>&lt;p&gt;A hotline is a point-to-point communications link in which a call is automatically directed to the preselected destination without any additional action by the user when the end instrument goes off-hook. An example would be a phone that automatically connects to emergency services on picking up the receiver.&lt;/p&gt;
+      <guid>http://sheenamnarula1993.github.io/post/kubernetes/</guid>
+      <description>
 
-&lt;p&gt;3 military excercises performed with US now a days -&lt;/p&gt;
+&lt;h2 id=&#34;kubernetes-vocab&#34;&gt;Kubernetes Vocab&lt;/h2&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Vajra Prahar&lt;/li&gt;
-&lt;li&gt;Yudh Abhyas&lt;/li&gt;
-&lt;li&gt;Shatrujeet 2006&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&#34;node&#34;&gt;Node :&lt;/h3&gt;
 
-&lt;p&gt;But it was not the same in history. Let us have a look on history first:
-It was the time when two countries got independence in 1947 i.e. India and Pakistan.On 20th October,1947 i.e after two months and six days after Pakistan&amp;rsquo;s Independence, US established relations with Pakistan and It was the first nation who established the relation with new state.There were 3 reasons of this relation :&lt;/p&gt;
+&lt;p&gt;It is an instance of computer which is also known as worker nodes.&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Dominance in middle east,gulf nation and South Asia.&lt;/li&gt;
-&lt;li&gt;Countering U.S.S.R&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&#34;pods&#34;&gt;Pods :&lt;/h3&gt;
 
-&lt;p&gt;India was having non-alignment policy at that time according to which India will not act in favour of any nation.The reason of such policy was the time of cold war.India didn&amp;rsquo;t want to involve in cold war and wanted to be neutral.But to counter US-PAK relation, India started building strong strategic,economic and military relations with Russia.&lt;/p&gt;
+&lt;p&gt;It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&amp;rsquo;s image.
+Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.&lt;/p&gt;
 
-&lt;p&gt;For next 14 years, India was having cold war with US till the time John F kennedy became president of US.
-At the time of John F kennedy, started building relations with India to counterweight the rise of communist China after Vietnam and Korean war where US face challenge from China.&lt;/p&gt;
+&lt;p&gt;When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes. That means everything related to pod lifecycle dies with that pod.(stable ip address concept)&lt;/p&gt;
 
-&lt;p&gt;This relation with US was quite helpful at the time of Indo-China war in 1962 where US helped India by sending USS kitty Hawk aircraft.&lt;/p&gt;
+&lt;h3 id=&#34;services&#34;&gt;Services :&lt;/h3&gt;
 
-&lt;p&gt;// image of aircraft&lt;/p&gt;
+&lt;p&gt;Services are the end points that export ports to outside world and map the ports to pods.&lt;/p&gt;
 
-&lt;p&gt;But US turned the table in Indo-Pak war in 1965 where it helped Pakistan by sending F-104 and F-86 fighter aircrafts which were super fast aircrafts at that time.Befor this India asked for these aircrafts but US refused to give those to India but helped Pakistan with those aircrafts.
-In 1971 also, US helped Pakistan in bangladesh liberation war with USS Enterprise Aircraft carrier in Bay of Bengal but due to cease fire, US had to take back the aircraft.
-After this all, in intrest of itself, India took some actions one of which was Smiling Buddha.India practiced a nuclear test which got failed but US opposed this test of India.&lt;/p&gt;
+&lt;h3 id=&#34;deployment&#34;&gt;Deployment :&lt;/h3&gt;
+
+&lt;p&gt;It represents a set of multiple identical pods.Deployments run multiple instances or replicas of your application.It ensures the availability of one or more instances of app to serve user requests.Deployments are managed by kubernetes deployment controller.
+Deployments use a Pod template, which contains a specification for its Pods. The Pod specification determines how each Pod should look like: what applications should run inside its containers, which volumes the Pods should mount, its labels, and more.&lt;/p&gt;
+
+&lt;p&gt;When a Deployment&amp;rsquo;s Pod template is changed, new Pods are automatically created one at a time.&lt;/p&gt;
+
+&lt;h3 id=&#34;installation-of-kubernetes&#34;&gt;Installation of kubernetes :&lt;/h3&gt;
+
+&lt;p&gt;Let us install Minikube to run single-node kubernetes cluster in a virtual machine on your personal computer to work locally and kubectl as command line interface of kubernetes.&lt;/p&gt;
+
+&lt;p&gt;Let us check first whether virtualization is supported on Linux. For this,run the following command and verify that the output is non-empty:
+egrep &amp;ndash;color &amp;lsquo;vmx|svm&amp;rsquo; /proc/cpuinfo&lt;/p&gt;
+
+&lt;h2 id=&#34;install-kubectl-link-for-installation&#34;&gt;Install kubectl : Link for installation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux&#34; target=&#34;_blank&#34;&gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;for-ubuntu-here-are-the-commands-to-install-kubectl&#34;&gt;For ubuntu, here are the commands to install kubectl :&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;  sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install -y apt-transport-https
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  echo &amp;quot;deb https://apt.kubernetes.io/ kubernetes-xenial main&amp;quot; | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+  sudo apt-get update
+  sudo apt-get install -y kubectl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;install-minikube&#34;&gt;Install Minikube :&lt;/h2&gt;
+
+&lt;h3 id=&#34;link-for-installation-https-kubernetes-io-docs-tasks-tools-install-minikube&#34;&gt;Link for Installation : &lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/install-minikube/&#34; target=&#34;_blank&#34;&gt;https://kubernetes.io/docs/tasks/tools/install-minikube/&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h1 id=&#34;architecture-explanation-of-kubernetes&#34;&gt;Architecture explanation of kubernetes :&lt;/h1&gt;
+
+&lt;h3 id=&#34;kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler&#34;&gt;Kubernetes Master Components: Etcd, API Server, Controller Manager, and Scheduler :&lt;/h3&gt;
+
+&lt;p&gt;Kubernetes master is considered as the brain of kubernetes cluster. It run Etcd, Scheduler, Controller Manager and Api Server inside it.Lets discuss there components briefly so that working on kubernetes should not appear to be strange and knowing components of kubernetes master will help us in a significant way in creating a working image of kubernetes master.&lt;/p&gt;
+
+&lt;h4 id=&#34;etcd&#34;&gt;Etcd :&lt;/h4&gt;
+
+&lt;p&gt;Etcd is a very important part of kubernetes master node. It saves the configuration data of kubernetes cluster like which nodes are there,how many pods are there and which pod is running on which node and a lot more information regarding cluster state. Kubernetes master reads and write data to etcd to get the current state and decides the required logical operations to be performed to achieve the desired state.
+Etcdctl is a command line interface to manage Etcd through which many operations for etcd can be performed like adding and removing key-value pairs(etcd data storage format is key value pair), verify cluster health, generating database snapshots(As Kubernetes master is highly dependent on etcd for data, so we should have a backup plan for etcd. We can save a snapshot of etcd by using etcdctl save snapshot command).&lt;/p&gt;
+
+&lt;p&gt;Etcd also impelements a &amp;ldquo;watcher&amp;rdquo; feature in which for every key there is a watcher. Whenever key changes, watcher is notified and in return an event is triggered for Api server. After listening to event, api server takes important decisions of operations to be performed to move current state towards desired state.&lt;/p&gt;
+
+&lt;h4 id=&#34;api-server&#34;&gt;Api Server :&lt;/h4&gt;
 </description>
     </item>
     
