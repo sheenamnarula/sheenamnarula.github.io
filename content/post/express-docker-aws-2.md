@@ -1,5 +1,7 @@
 +++
 title = "Node-Docker-Aws Part-2"
+featured = true
+publishDate = 2019-06-29
 subtitle = "This article is about deploying two containers(api + database) using AWS Elastic Container Service"
 
 
@@ -11,15 +13,11 @@ view = 3
 
 +++
 
-First of all, make a project in node-express-mongo and dockerise it. Here I am giving Dockerfile for a very basic node app.
-
-#github link for dockerised app : https://github.com/sheenamnarula/node-graphql-docker-aws
-
 I am assuming that an amazon account is already set up to use the Amazon Elastic Container Service(ECS).
 
 Steps to deploy two containers(app + database) -
 
-1. Dockerise app (link for previous article)
+1. Dockerise app
 2. Create Registry(ECR)
 3. Upload app image to ECR
 4. Create task definition with two containers
@@ -30,7 +28,7 @@ Steps to deploy two containers(app + database) -
 
 ### 1. Dockerise app
 
-        for this you can check this article : https://github.com/sheenamnarula/node-graphql-docker-aws (linkk for previous article)
+for this you can check this practice project : https://github.com/sheenamnarula/node-graphql-docker-aws
 
 ### 2. Create Registry(ECR)
 
@@ -99,7 +97,7 @@ Click on Create New Task Definition and choose EC2 and then click on next.
 ![Example image](/img/aws-images/ec2-selection-task-def.png)
 
 Here you will get a form to define your task.
-![Example image](/img/aws-images/form-1-task-def.png)
+![Example image](/img/aws-images/form-1-taskdef.png)
 
 Fill out the required fields and click on Add Containers.
 ![Example image](/img/aws-images/add-container-button.png)

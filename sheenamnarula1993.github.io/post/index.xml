@@ -1,15 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Academic</title>
+    <title>Posts on Sheenam Narula</title>
     <link>http://sheenamnarula1993.github.io/post/</link>
-    <description>Recent content in Posts on Academic</description>
+    <description>Recent content in Posts on Sheenam Narula</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jun 2019 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0530</lastBuildDate>
     
 	<atom:link href="http://sheenamnarula1993.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Import Vs Require</title>
+      <link>http://sheenamnarula1993.github.io/post/import-require/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/import-require/</guid>
+      <description>Syntax of import/export : file : exportVar.js
+export const m = 1 ;
+file : importVar.js
+import {m} from exportVar.js
+Syntax of require : file : exportVar.js
+const m = 1;
+module.exports = m ;
+file: importVar.js
+const m = require(&amp;lsquo;./exportVar.js&amp;rsquo;)
+Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&amp;rsquo;t wait for first module to be loaded completely.</description>
+    </item>
+    
+    <item>
+      <title>Node-Docker-Aws Part-2</title>
+      <link>http://sheenamnarula1993.github.io/post/express-docker-aws-2/</link>
+      <pubDate>Sat, 29 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-2/</guid>
+      <description>I am assuming that an amazon account is already set up to use the Amazon Elastic Container Service(ECS).
+Steps to deploy two containers(app + database) -
+ Dockerise app Create Registry(ECR) Upload app image to ECR Create task definition with two containers Create a cluster Create a service and run it.  Practical Explanation of steps : 1. Dockerise app for this you can check this practice project : https://github.</description>
+    </item>
+    
+    <item>
+      <title>Node-Docker-Aws Part-1</title>
+      <link>http://sheenamnarula1993.github.io/post/express-docker-aws-1/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-1/</guid>
+      <description>First of all, make a project in node-express-mongo and dockerise it. Here I am giving a github link of a basic node-express app made along with graphql as this has become my favourite language because of its advantage of providing independence to front-end developers.
+Github link for dockerised app : https://github.com/sheenamnarula/node-graphql-docker-aws Docker File Lets understand first, what is the meaning of lines written in the docker file.
+From node:8.9.0 - This line specifies the base image.</description>
+    </item>
+    
+    <item>
+      <title>Basic Docker Commands</title>
+      <link>http://sheenamnarula1993.github.io/post/docker-basic-commands/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/docker-basic-commands/</guid>
+      <description>Show commands and Management commands  $ docker  Docker version :  $ docker --version  Show info like number of containers  $ docker info  Commands required for Containers Command to run a container in foreground :  $ docker container run -it -p 80:80 {image name}  Example : docker container run -it -p 80:80 nginx
+Command to run a container in backround :  $ docker container run -d -p 80:80 {image name}  Short hand command  $ docker container run -d -p 80:80 {image name}  Naming custom names to container  $ docker container run -p 80:80 --name {container name} {image name}  Example : docker container run -d -p 80:80 &amp;ndash;name nginx-server nginx</description>
+    </item>
+    
+    <item>
+      <title>Scala Part-2</title>
+      <link>http://sheenamnarula1993.github.io/post/scalaprojectstructure/</link>
+      <pubDate>Thu, 20 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/scalaprojectstructure/</guid>
+      <description>.idea/— contains IntelliJ’s project specific settings files. According to JetBrains, normally there is no need to edit the contents of this folder.
+build.sbt — contains build definition of the project. For example, project name, project version, scalaVersion, libraryDependencies, etc. Note that this file is written in Scala.
+project/—because build.sbt is written in Scala, we need to build build.sbt. Therefore, this folder contains all the files needed for building build.sbt.
+project/build.properties — this file contains build definition of build.</description>
+    </item>
+    
+    <item>
+      <title>Scala Part-1</title>
+      <link>http://sheenamnarula1993.github.io/post/scala/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/scala/</guid>
+      <description>SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
+When you write small programs that consist of only one, or just two or three source files, then it&amp;rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.</description>
+    </item>
     
     <item>
       <title>Cold War</title>
@@ -25,7 +97,7 @@ Why is it called cold war : No direct combat or fight between USSR + Allies and 
     <item>
       <title>Basic Electronics Part-1</title>
       <link>http://sheenamnarula1993.github.io/post/basic-electronics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0530</pubDate>
       
       <guid>http://sheenamnarula1993.github.io/post/basic-electronics/</guid>
       <description>(NO DEFINITIONS ,ONLY UNDERSTANDING) We all have heard the term, Electricity.
@@ -33,25 +105,23 @@ But when we need to explain this term, we can see the working fan, glowing tube 
     </item>
     
     <item>
-      <title>Basic Electronics Part-2</title>
-      <link>http://sheenamnarula1993.github.io/post/basic-electronics-part-2/</link>
+      <title></title>
+      <link>http://sheenamnarula1993.github.io/post/containerization-vs-vm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://sheenamnarula1993.github.io/post/basic-electronics-part-2/</guid>
-      <description>(NO DEFINITIONS ,ONLY UNDERSTANDING) In basic electronics Part-2, I explained about the charge carriers,&amp;ldquo;Electrons&amp;rdquo;.After rubbing, these get knocked off and get stationary. But now the question is how we actually get non-stop flow of electricity that we actually use in daily life.
-For this, we need to know some facts about materials.
-As every material is made up of atoms but not with the same type of atoms. With some types of materials, such as metals, the outermost electrons in the atoms are so loosely bound that they chaotically move in the space between the atoms of that material by nothing more than the influence of room-temperature heat energy.</description>
+      <guid>http://sheenamnarula1993.github.io/post/containerization-vs-vm/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>India-US Relations</title>
-      <link>http://sheenamnarula1993.github.io/post/india-us-relations/</link>
+      <title>KUBERNETES</title>
+      <link>http://sheenamnarula1993.github.io/post/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://sheenamnarula1993.github.io/post/india-us-relations/</guid>
-      <description>A hotline is a point-to-point communications link in which a call is automatically directed to the preselected destination without any additional action by the user when the end instrument goes off-hook. An example would be a phone that automatically connects to emergency services on picking up the receiver.
-3 military excercises performed with US now a days -
- Vajra Prahar Yudh Abhyas Shatrujeet 2006  But it was not the same in history.</description>
+      <guid>http://sheenamnarula1993.github.io/post/kubernetes/</guid>
+      <description>Kubernetes Vocab Node : It is an instance of computer which is also known as worker nodes.
+Pods : It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&amp;rsquo;s image. Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.
+When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes.</description>
     </item>
     
   </channel>

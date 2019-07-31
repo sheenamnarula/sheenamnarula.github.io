@@ -1,5 +1,6 @@
 +++
 title = "Scala Part-1"
+publishDate = 2019-06-19
 subtitle = "What is SBT?"
 
 

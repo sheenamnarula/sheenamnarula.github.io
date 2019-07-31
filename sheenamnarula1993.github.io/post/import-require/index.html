@@ -27,12 +27,19 @@
   
     
   
-  <meta name="description" content="(NO DEFINITIONS ,ONLY UNDERSTANDING) In basic electronics Part-2, I explained about the charge carriers,&ldquo;Electrons&rdquo;.After rubbing, these get knocked off and get stationary. But now the question is how we actually get non-stop flow of electricity that we actually use in daily life.
-For this, we need to know some facts about materials.
-As every material is made up of atoms but not with the same type of atoms. With some types of materials, such as metals, the outermost electrons in the atoms are so loosely bound that they chaotically move in the space between the atoms of that material by nothing more than the influence of room-temperature heat energy.">
+  <meta name="description" content="Syntax of import/export : file : exportVar.js
+export const m = 1 ;
+file : importVar.js
+import {m} from exportVar.js
+Syntax of require : file : exportVar.js
+const m = 1;
+module.exports = m ;
+file: importVar.js
+const m = require(&lsquo;./exportVar.js&rsquo;)
+Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely.">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/basic-electronics-part-2/">
+  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/import-require/">
 
   
 
@@ -101,7 +108,7 @@ As every material is made up of atoms but not with the same type of atoms. With 
     
     
     
-    <link rel="stylesheet" href="/css/academic.92ba7df14063d0bd1a7b2fcbd9bce2a9.css">
+    <link rel="stylesheet" href="/css/academic.ff68a4f235bbb015cb946d9314409e1d.css">
   
 
   
@@ -114,7 +121,7 @@ As every material is made up of atoms but not with the same type of atoms. With 
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/basic-electronics-part-2/">
+  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/import-require/">
 
   
   
@@ -125,23 +132,31 @@ As every material is made up of atoms but not with the same type of atoms. With 
   
   <meta property="twitter:card" content="summary">
   
-  <meta property="og:site_name" content="Academic">
-  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/basic-electronics-part-2/">
-  <meta property="og:title" content="Basic Electronics Part-2 | Academic">
-  <meta property="og:description" content="(NO DEFINITIONS ,ONLY UNDERSTANDING) In basic electronics Part-2, I explained about the charge carriers,&ldquo;Electrons&rdquo;.After rubbing, these get knocked off and get stationary. But now the question is how we actually get non-stop flow of electricity that we actually use in daily life.
-For this, we need to know some facts about materials.
-As every material is made up of atoms but not with the same type of atoms. With some types of materials, such as metals, the outermost electrons in the atoms are so loosely bound that they chaotically move in the space between the atoms of that material by nothing more than the influence of room-temperature heat energy."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
+  <meta property="og:site_name" content="Sheenam Narula">
+  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/import-require/">
+  <meta property="og:title" content="Import Vs Require | Sheenam Narula">
+  <meta property="og:description" content="Syntax of import/export : file : exportVar.js
+export const m = 1 ;
+file : importVar.js
+import {m} from exportVar.js
+Syntax of require : file : exportVar.js
+const m = 1;
+module.exports = m ;
+file: importVar.js
+const m = require(&lsquo;./exportVar.js&rsquo;)
+Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
+  <meta property="article:published_time" content="2019-07-31T00:00:00&#43;05:30">
   
+  <meta property="article:modified_time" content="2019-07-31T00:00:00&#43;05:30">
   
+
   
 
   
 
-  
-
-  <title>Basic Electronics Part-2 | Academic</title>
+  <title>Import Vs Require | Sheenam Narula</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -181,7 +196,7 @@ As every material is made up of atoms but not with the same type of atoms. With 
   <div class="container">
 
     
-      <a class="navbar-brand" href="/">Academic</a>
+      <a class="navbar-brand" href="/">Sheenam Narula</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -263,25 +278,6 @@ As every material is made up of atoms but not with the same type of atoms. With 
         
 
         <li class="nav-item">
-          <a class="nav-link" href="/tutorial/">
-            
-            <span>Tutorials</span>
-            
-          </a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
           <a class="nav-link" href="/#contact">
             
             <span>Contact</span>
@@ -341,10 +337,10 @@ As every material is made up of atoms but not with the same type of atoms. With 
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Basic Electronics Part-2</h1>
+  <h1 itemprop="name">Import Vs Require</h1>
 
   
-  <p class="page-subtitle">Conductors, Insulators and Electronic Circuits</p>
+  <p class="page-subtitle">This article is about whether to use import or require and why node js still does not support import/export.</p>
   
 
   
@@ -352,8 +348,8 @@ As every material is made up of atoms but not with the same type of atoms. With 
 
 
 
-<meta content="" itemprop="datePublished">
-<meta content="" itemprop="dateModified">
+<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="datePublished">
+<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -366,7 +362,7 @@ As every material is made up of atoms but not with the same type of atoms. With 
     
       
     
-    <time>Jan 1, 0001</time>
+    <time>Jul 31, 2019</time>
   </span>
   
 
@@ -375,7 +371,7 @@ As every material is made up of atoms but not with the same type of atoms. With 
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    6 min read
   </span>
   
 
@@ -418,19 +414,128 @@ As every material is made up of atoms but not with the same type of atoms. With 
     <div class="article-style" itemprop="articleBody">
       
 
-<h4 id="no-definitions-only-understanding">(NO DEFINITIONS ,ONLY UNDERSTANDING)</h4>
+<h5 id="syntax-of-import-export">Syntax of import/export :</h5>
 
-<p>In basic electronics Part-2, I explained about the charge carriers,&ldquo;Electrons&rdquo;.After rubbing, these get knocked off and get stationary.
-But now the question is how we actually get non-stop flow of electricity that we actually use in daily life.</p>
+<p>file : exportVar.js</p>
 
-<p>For this, we need to know some facts about materials.</p>
+<p>export const m = 1 ;</p>
 
-<p>As every material is made up of atoms but not with the same type of atoms. With some types of materials, such as metals, the outermost electrons in the atoms are so loosely bound that they chaotically move in the space between the atoms of that material by nothing more than the influence of room-temperature heat energy. Because these virtually unbound electrons are free to leave their respective atoms and float around in the space between adjacent atoms, they are often called free electrons.
-In other types of materials such as glass, the atoms’ electrons have very little freedom to move around. While external forces such as physical rubbing can force some of these electrons to leave their respective atoms and transfer to the atoms of another material, they do not move between atoms within that material very easily.</p>
+<p>file : importVar.js</p>
 
-<p>This relative mobility of electrons within a material is known as electric conductivity.Materials with high electron mobility (many free electrons) are called conductors, while materials with low electron mobility (few or no free electrons) are called insulators.</p>
+<p>import {m} from exportVar.js</p>
 
-<p>It should also be understood that some materials experience changes in their electrical properties under different conditions. Glass, for instance, is a very good insulator at room temperature but becomes a conductor when heated to a very high temperature.</p>
+<h5 id="syntax-of-require">Syntax of require :</h5>
+
+<p>file : exportVar.js</p>
+
+<p>const m = 1;</p>
+
+<p>module.exports = m ;</p>
+
+<p>file: importVar.js</p>
+
+<p>const m = require(&lsquo;./exportVar.js&rsquo;)</p>
+
+<h3 id="loading-strategy">Loading Strategy :</h3>
+
+<p>Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules.
+But in case of require(), synchronous loading of modules takes place.
+It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely.But in case of require, loading of second module will start after loading of first module is completed.</p>
+
+<p>This is the key difference between import/export and require.</p>
+
+<p>To get more deep in to this, we need to know how ES6 structure is working and how it is different from Common js.</p>
+
+<p>The key difference between the Common JS and ES6 modules is when to know the shape of module.</p>
+
+<p>In Common JS, when a module is exported, the steps performed before execution is given in this figure.</p>
+
+<p><img src="/img/common-js-steps.png" alt="Example image" /></p>
+
+<p>Here the common mistake that most of the developers make in understanding the loading step.
+In loading step, it is determined that what kind of thing is pointed by absolute path that is obtained on completion of resolution step.If it is Node.js native module, then dynamic linking of module is decided. On the other hand, if it is JSON file, the content is loaded in memory for further use.
+Here is the trick, in wrapper step, before evaluation, the loaded Javasacript is wrapped in a function. For e.g.</p>
+
+<p>In file , example.js</p>
+
+<p>const m = 1;</p>
+
+<p>module.exports.m = m;</p>
+
+<p>code is actually wrapped and passed to evaluation in below function format :</p>
+
+<p>function (exports, require, module, **filename, **dirname) {
+const m = 1;
+module.exports.m = m;
+}</p>
+
+<p>Here the exports is a parameter for wrapper function and it is a normal javascript object. So when the wrapper function is evaluated, it returns the exports object which is then used as a result of require(). The main point to note here is that, there is no way to determine as what kind of module is being exported by Common JS until the evaluation of wrapper.</p>
+
+<p>On the other hand, if we use import/export i.e. ES6 feature, the equivalent code of above example is :</p>
+
+<p>In file , example.js</p>
+
+<p>export const m = 1;</p>
+
+<p>import {m} from &lsquo;./example.js&rsquo;</p>
+
+<p>In this case, the shape of m is actually determined at the parsing step i.e before evaluation step. Actually, while parsing, and before evaluation, a Module Record is created, where a static listing of modules that have been exported in code are listed and verified. That means, it is verified first whether the exported m exists or not and link between import file and exported module i.e. m is eastablished. Only after creation of this module record, code is actually evaluated.
+Here the key point is, before even evaluation of code, the shape of module is known or we can say that, import/export is resolved before evaluation of code.</p>
+
+<h2 id="challenge-for-node-js">Challenge for Node.js :</h2>
+
+<p>Here is the challenge for Node.js comes up when exported module is not an ESM i.e ECMASCRIPT Module but a Common JS module because while importing with import statement or according to ES6 structure, shape of module should be known before evaluation but in case of Common JS module it becomes impossible to determine shape of code before evaluation step due to wrapper function.</p>
+
+<p>To resolve this challenge, one proposal came up in which it was proposed that if a module is ESM module, then it will be directly added to list of Module Record but if it is not i.e if it is a Common JS module, then rather than giving error or giving up, the verification step will be left in pending state and a process of evaluation of that module will be executed. After getting confirmation of existence of that module, Module Record will be created.</p>
+
+<p>But again for the implementation of this proposal, Node js requires some mechanism to identify whether the module is ESM or Common JS Module. Various approaches have been suggested but Michael Jackson Script is supposed to be accepted.</p>
+
+<h3 id="michael-jackson-script">Michael Jackson Script :</h3>
+
+<p>In this a new file extension *.mjs is supposed to be introduced for ESM modules.
+Right now, Node is distinguishing between the modules like this :</p>
+
+<p>.node files : native modules</p>
+
+<p>.js : Common JS modules</p>
+
+<p>.json : JSON files</p>
+
+<p>Now *.mjs will specify that the module is ESM and it should be loaded with the right mechanism.
+The key point here is by knowing the extensions of file, loading mechanism will be selected. For Common JS module, evaluation of module will be done first so that verification of existence can be done.</p>
+
+<p>E.g. There are two files common.js and esm.mjs</p>
+
+<p>import c from &lsquo;./common.js&rsquo; will be treated as Common js module</p>
+
+<p>import e from &lsquo;./esm.mjs&rsquo; will be treated as ESM module</p>
+
+<h2 id="what-to-do-if-i-want-to-use-es6-import-export-feature-in-project">What to do if i want to use ES6 import/export feature in project?</h2>
+
+<h4 id="answer-is-babel">Answer is Babel</h4>
+
+<p>If we want to use import/export feature of ES6, we need to use babel which transpiles code in Common JS. Here is a point which needs to be understood that Babel only converts the syntax to Common JS syntax so that it can be resolved by Node js, but implementation is according to ESM only.</p>
+
+<p>Example: If we see named imports like</p>
+
+<p>import {a,b} from &lsquo;ab&rsquo;;</p>
+
+<p>This syntax will work only if ab is an ESM. But if it is Common JS module, it is not possible to use this syntax as shape of code can&rsquo;t be determined until evaluation is done in this case.</p>
+
+<p>But here BABEL does a perfect job for us by converting ES6 syntax to Common JS syntax and we get the required implementation.</p>
+
+<h2 id="significance-of-using-es6-structure">Significance of using ES6 structure :</h2>
+
+<p>In case of ES6 structure, the first step of loading the contents of file from disk is quite similar but may happen asynchronously. When the content of files is available, they are parsed. While parsing, the shape of exported module is determined and linked to respective import.That means all exports and imports will know their targets before evaluation itself i.e. they are resolved before execution step and that too happen asynchronously.
+In node.js terms, we can say that loading scripts, resolution of import and export and evaluation of module code occur over multiple turns of the event loop.</p>
+
+<h3 id="practical-example">Practical Example :</h3>
+
+<p>module a and b, both does not exist. b is imported using require and a is imported using import. Now due to use of require, existence of b is not verified and code does not throw error for non-existence of b. But in case of module a, existence of a is verified and code throws error for a at very early stage i.e at parsing step only.</p>
+
+<p><img src="/img/example-import-require.png" alt="Example image" /></p>
+
+<p><img src="/img/error-import-require.png" alt="Example image" /></p>
 
     </div>
 
