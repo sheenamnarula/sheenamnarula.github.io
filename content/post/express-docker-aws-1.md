@@ -1,5 +1,7 @@
 +++
 title = "Node-Docker-Aws Part-1"
+featured = true
+publishDate = 2019-06-28
 subtitle = "This article is about dockerising a node app."
 
 
@@ -13,7 +15,7 @@ view = 3
 
 First of all, make a project in node-express-mongo and dockerise it. Here I am giving a github link of a basic node-express app made along with graphql as this has become my favourite language because of its advantage of providing independence to front-end developers.
 
-#github link for dockerised app :
+#### Github link for dockerised app : https://github.com/sheenamnarula/node-graphql-docker-aws
 
 # Docker File
 

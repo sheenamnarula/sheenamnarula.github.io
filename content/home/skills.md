@@ -51,6 +51,24 @@ subtitle = ""
   description = "90%"
 
   [[feature]]
+  icon = "loopback"
+  icon_pack = "sheecon"
+  name = "loopback"
+  description = "80%"
+
+  [[feature]]
+  icon = "docker"
+  icon_pack = "sheecon"
+  name = "Docker"
+  description = "80%"
+
+  [[feature]]
+  icon = "kubernetes"
+  icon_pack = "sheecon"
+  name = "Kubernetes"
+  description = "70%"
+
+  [[feature]]
   icon = "react"
   icon_pack = "sheecon"
   name = "React with Redux"

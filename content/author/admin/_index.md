@@ -72,4 +72,4 @@ user_groups = ["Researchers", "Visitors"]
 
 +++
 
-I am a Fullstack(MEAN and MERN) developer. I have 2.5 years of experience. Mainly I like to work as a backend developer.
+I am a Fullstack(MEAN and MERN) developer. I have 3 years of experience. Mainly I like to work as a backend developer.
