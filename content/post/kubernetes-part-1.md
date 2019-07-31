@@ -1,5 +1,7 @@
 +++
 title = "Kubernetes Part-1"
+featured = true
+publishDate = 2019-07-29
 subtitle = "This article is about Kubernetes architecture."
 
 

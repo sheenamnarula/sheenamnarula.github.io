@@ -1,6 +1,5 @@
 +++
 title = "Scala Part-2"
-featured = true
 publishDate = 2019-06-20
 subtitle = "Project Structure"
 
