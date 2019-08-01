@@ -13,27 +13,34 @@ view = 3
 
 +++
 
-##### Syntax of import/export :
+#### Syntax of import/export :
 
 file : exportVar.js
 
+```
 export const m = 1 ;
+```
 
 file : importVar.js
 
+```
 import {m} from exportVar.js
+```
 
 ##### Syntax of require :
 
 file : exportVar.js
 
+```
 const m = 1;
-
 module.exports = m ;
+```
 
 file: importVar.js
 
+```
 const m = require('./exportVar.js')
+```
 
 ### Loading Strategy :
 
@@ -55,28 +62,32 @@ Here the common mistake that most of the developers make in understanding the lo
 In loading step, it is determined that what kind of thing is pointed by absolute path that is obtained on completion of resolution step.If it is Node.js native module, then dynamic linking of module is decided. On the other hand, if it is JSON file, the content is loaded in memory for further use.
 Here is the trick, in wrapper step, before evaluation, the loaded Javasacript is wrapped in a function. For e.g.
 
-In file , example.js
+In file, example.js
 
+```
 const m = 1;
-
 module.exports.m = m;
+```
 
 code is actually wrapped and passed to evaluation in below function format :
 
+```
 function (exports, require, module, **filename, **dirname) {
 const m = 1;
 module.exports.m = m;
 }
+```
 
 Here the exports is a parameter for wrapper function and it is a normal javascript object. So when the wrapper function is evaluated, it returns the exports object which is then used as a result of require(). The main point to note here is that, there is no way to determine as what kind of module is being exported by Common JS until the evaluation of wrapper.
 
 On the other hand, if we use import/export i.e. ES6 feature, the equivalent code of above example is :
 
-In file , example.js
+In file, example.js
 
+```
 export const m = 1;
-
 import {m} from './example.js'
+```
 
 In this case, the shape of m is actually determined at the parsing step i.e before evaluation step. Actually, while parsing, and before evaluation, a Module Record is created, where a static listing of modules that have been exported in code are listed and verified. That means, it is verified first whether the exported m exists or not and link between import file and exported module i.e. m is eastablished. Only after creation of this module record, code is actually evaluated.
 Here the key point is, before even evaluation of code, the shape of module is known or we can say that, import/export is resolved before evaluation of code.
@@ -105,9 +116,17 @@ The key point here is by knowing the extensions of file, loading mechanism will 
 
 E.g. There are two files common.js and esm.mjs
 
-import c from './common.js' will be treated as Common js module
+```
+import c from './common.js'
+```
 
-import e from './esm.mjs' will be treated as ESM module
+will be treated as Common js module
+
+```
+import e from './esm.mjs'
+```
+
+will be treated as ESM module
 
 ## What to do if i want to use ES6 import/export feature in project?
 
@@ -117,7 +136,9 @@ If we want to use import/export feature of ES6, we need to use babel which trans
 
 Example: If we see named imports like
 
+```
 import {a,b} from 'ab';
+```
 
 This syntax will work only if ab is an ESM. But if it is Common JS module, it is not possible to use this syntax as shape of code can't be determined until evaluation is done in this case.
 
