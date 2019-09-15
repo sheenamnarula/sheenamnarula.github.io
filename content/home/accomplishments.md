@@ -49,7 +49,7 @@ date_format = "Jan 2006"
   #organization_url = "https://netmaxtech.com/"
   title = "Troubleshooting"
   date_start = "2013-06-07"
-  date_end = "2013-06-17"
+  date_end = "2013-07-07"
   description = "I attended workshop for troubleshooting in electronics where i learnt how to start with fault finding techniques in electronics circuit."
 
 +++
