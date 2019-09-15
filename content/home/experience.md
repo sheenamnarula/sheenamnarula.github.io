@@ -25,11 +25,11 @@ date_format = "Jan 2006"
   date_start = "2019-01-28"
   date_end = ""
   description = """
-  Responsibilities include:
-  
-  * Analysing
-  * Development
   """
+  # Responsibilities include:
+  
+  # * Analysing
+  # * Development
 
 [[experience]]
   title = "Software Engineer"
@@ -38,7 +38,7 @@ date_format = "Jan 2006"
   location = "Mohali"
   date_start = "2017-06-22"
   date_end = "2018-07-27"
-  description = """I worked as a Backend Developer in this company and earned experience in Nodejs with Hapi js and Graphql, Node js with Hapi js, Meteor and Meteor with Graphql. I also got an opportunity to work in React and Redux there."""
+  # description = """I worked as a Backend Developer in this company and earned experience in Nodejs with Hapi js and Graphql, Node js with Hapi js, Meteor and Meteor with Graphql. I also got an opportunity to work in React and Redux there."""
 
   [[experience]]
   title = "Project Engineer"
@@ -47,6 +47,6 @@ date_format = "Jan 2006"
   location = "Bangalore"
   date_start = "2016-06-16"
   date_end = "2018-06-05"
-  description = """I worked as a Backend Developer in this company and earned experience in Nodejs with Hapi js."""
+  # description = """I worked as a Backend Developer in this company and earned experience in Nodejs with Hapi js."""
 
 +++

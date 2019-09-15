@@ -72,4 +72,6 @@ user_groups = ["Researchers", "Visitors"]
 
 +++
 
-I am a Fullstack(MEAN and MERN) developer. I have 3 years of experience. Mainly I like to work as a backend developer.
+This is Sheenam Narula's website that is a bit copy of her. She is a Software Engineer possessing experience of 3 years as a backend developer(Node js).
+
+Being from Electronics backround, she has a decent knowledge of Electronics fundamentals and is able to handle IOT project.

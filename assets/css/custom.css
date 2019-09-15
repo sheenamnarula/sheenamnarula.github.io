@@ -18,6 +18,12 @@
   height: 60px;
 }
 
+.sheecon-iot {
+  background: url(/icons/iot.svg) center no-repeat;
+  width: 100%;
+  height: 60px;
+}
+
 .sheecon-loopback {
   background: url(/icons/loopback.svg) center no-repeat;
   width: 100%;
