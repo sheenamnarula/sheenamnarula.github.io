@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   #certificate_url = "https://www.datacamp.com"
   date_start = "2017-01-07"
   date_end = "2017-04-07"
-  description = "I was selected for a fullstack development training from program while working in Wipro Digital. In this program, I was trained in Node js with Express js,Mongodb and Angular 2."
+  description = "She was selected for a fullstack development training program while working in Wipro Digital. In this program, she was trained in Node js with Express js,Mongodb and Angular 2."
 
 [[item]]
   organization = "Wipro"
@@ -34,7 +34,7 @@ date_format = "Jan 2006"
   title = "Core Java Internship"
   date_start = "2016-02-07"
   date_end = "2016-04-07"
-  description = "I got placed in Wipro in college placements and got an opportunity to get my internship done in a highly professional environment in Wipro during 8th semester of my B.tech.There i started with the coding fundamentals and learnt Core Java."
+  description = "She got placed in Wipro in college placements and got an opportunity to get my internship done in a highly professional environment in Wipro during 8th semester of my B.tech.There she started with the coding fundamentals and learnt Core Java."
   
   [[item]]
   organization = "Netmax"
@@ -42,7 +42,7 @@ date_format = "Jan 2006"
   title = "Microcontrollers Training"
   date_start = "2013-06-07"
   date_end = "2013-07-07"
-  description = "I got trained in microcontrollers - 8051,PIC and Arduino."
+  description = "She got trained in microcontrollers - 8051,PIC and Arduino."
 
   [[item]]
   organization = "Narula Electronics"
@@ -50,6 +50,6 @@ date_format = "Jan 2006"
   title = "Troubleshooting"
   date_start = "2013-06-07"
   date_end = "2013-07-07"
-  description = "I attended workshop for troubleshooting in electronics where i learnt how to start with fault finding techniques in electronics circuit."
+  description = "She attended workshop for troubleshooting in electronics where she learnt how to start with fault finding techniques in electronics circuit."
 
 +++
