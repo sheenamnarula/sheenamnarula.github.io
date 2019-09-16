@@ -18,13 +18,13 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab fa-node"
   name = "Node js"
-  description = "75%"
+  description = "80%"
 
   [[feature]]
   icon = "graphql"
   icon_pack = "sheecon"
   name = "Graphql"
-  description = "75%"
+  description = "78%"
 
   [[feature]]
   icon = "express"
@@ -42,7 +42,7 @@ subtitle = ""
   icon = "meteor"
   icon_pack = "sheecon"
   name = "Meteor"
-  description = "75%"
+  description = "70%"
 
   [[feature]]
   icon = "mongoDb"
@@ -54,7 +54,7 @@ subtitle = ""
   icon = "loopback"
   icon_pack = "sheecon"
   name = "loopback"
-  description = "75%"
+  description = "72%"
 
   [[feature]]
   icon = "docker"

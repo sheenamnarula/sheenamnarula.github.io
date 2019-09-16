@@ -46,7 +46,7 @@ date_format = "Jan 2006"
   company_url = "https://www.wipro.com/"
   location = "Bangalore"
   date_start = "2016-06-16"
-  date_end = "2018-06-05"
+  date_end = "2017-06-05"
   # description = """I worked as a Backend Developer in this company and earned experience in Nodejs with Hapi js."""
 
 +++

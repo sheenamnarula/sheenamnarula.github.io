@@ -72,6 +72,6 @@ user_groups = ["Researchers", "Visitors"]
 
 +++
 
-This is Sheenam Narula's website that is a bit copy of her. She is a Software Engineer possessing experience of 3 years as a backend developer(Node js).
+This is my website that is a bit copy of me. I am a Software Engineer possessing experience of 3 years as a backend developer(Node js).
 
-Being from Electronics backround, she has a decent knowledge of Electronics fundamentals and is able to handle IOT project.
+Being from Electronics backround, I do have a decent knowledge of Electronics fundamentals and would love to go for IOT projects.

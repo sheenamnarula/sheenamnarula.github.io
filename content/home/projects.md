@@ -74,7 +74,21 @@ subtitle = ""
  css_class = ""
 +++
 
-### Project #1 FortressIQ
+### Project #1: IOT
+Currently working on a IOT project in which devices need to be controlled with voice commands.
+
+- Hardware : Raspberry pi and arduino(for testing)
+- Programming Language : Python
+- Third party apis : Google apis or snowboy(both can be used according to requirement)
+
+##### Job roles and responsibilities:
+
+    • Working as a technical lead and handling a team.
+    • Imparting training of modules as per required by project.
+    • Analysing requirements and developing accordingly for customer satisfaction.
+
+
+### Project #2: FortressIQ
 
 This platform helps the new digital workforce thrive within the enterprise, addressing the scale problems endemic to automation platforms today, and the security, compliance and data problems that stifle their adoption
 
@@ -89,10 +103,12 @@ This platform helps the new digital workforce thrive within the enterprise, addr
     • Helped in designing backend architecture.
     • Implementation of backend architecture
     • Development of APIs in graphql.
-    • Transforming the data collected from the end-user and storing it in the required format.
-    • Further, the saved data is exported in excel files to be used for machine learning purposes.
+    • Transforming the data collected from the end-user and storing
+      it in the required format.
+    • Further, the saved data is exported in excel files to be used
+      for machine learning purposes.
 
-### Project #2 Veriown
+### Project #3: Veriown
 
 This is bringing internet-connected solar energy to the 1.2 billion people around the world without access to a power grid. With visionary program to supply electricity, light, and internet, with access to online education, entertainment, and commerce all from a single device, it is providing the miracles and benefits of the 21st century to everyone, everywhere.
 
@@ -104,9 +120,11 @@ This is bringing internet-connected solar energy to the 1.2 billion people aroun
 ##### Job roles and responsibilities:
 
     • Worked as a  backend developer for veriown cloud
-    • Developed the Error handling module so that end-user can get an error in a suitable format.
-    • Implemented Encryption and Decryption of customer data for security purposes.
-### Project #3: NOMIS
+    • Developed the Error handling module so that end-user can
+      get an error in a suitable format.
+    • Implemented Encryption and Decryption of customer data for
+      security purposes.
+### Project #4: NOMIS
 
 This tool is used to manage the loan specifications. At some places, like in Canada , loan interest rates are not predefined.These are calculated on the basis of earnings and expenditure of a person who is applying loan. Basically.a person can bargain for loan interest rate.So to manage all these things, this tool has some formula which can calculate interests and keeps record of every bargain and also about interest rates provided by competitor parties so that manager can see all the record at one place and can approve or reject loan.
 
@@ -119,7 +137,7 @@ This tool is used to manage the loan specifications. At some places, like in Can
     • Worked as a Backend developer.
     • Migration of APIs from meteor to node.
 
-### Project4 #: Samarthya
+### Project #5: Samarthya
 
 This project is an employment portal where any person can register and upload his work to showcase and can get employment.
 This project has two parts
@@ -140,7 +158,7 @@ This project has two parts
     • Stripe integration for the subscription of premium accounts.
     • Twilio integration for SMS notifications.
     
-### Project #5: Cheforder
+### Project #6: Cheforder
 
 The project was a catering app where a customer can pre book a chef or caterer.Chefs can register and can easily get orders.
 
@@ -156,7 +174,7 @@ The project was a catering app where a customer can pre book a chef or caterer.C
     • Fcm-node integration for mobile notifications
     • Implemented logic for cron jobs for ontime auto credit of payments.
 
-### Project #6: Konnect
+### Project #7: Konnect
 
 This project was mainly Uber like in technical implementation but this is to book car cleaners and services.In this project, customer role is there to book cleaners. But car cleaners can be manager and can hire further persons for work.For this purpose, a management portal was also a part of this project.
 
@@ -168,13 +186,14 @@ This project was mainly Uber like in technical implementation but this is to boo
 
     • Managed a small team of interns who were learning graphql.
     • Worked as a backend developer.
-    • Implemented graphql subscriptions for real-time requests for the services to the agents.
+    • Implemented graphql subscriptions for real-time requests for the services
+      to the agents.
     • Suggested and Introduced manager role to client.
     • Integrated Stripe for online payments.
     • Integrated apis for management portal using redux architecture in react.
 
 
-### Project #7: Brang
+### Project #8: Brang
 
 It was an app like Olx where customers can post pics of articles and rent these out to other users.
 
@@ -186,9 +205,10 @@ It was an app like Olx where customers can post pics of articles and rent these 
 
     • Worked as a backend developer
     • Mango pay integration for payment.
-    • Developed custom subscription module for auto-payment as mango pay does not support subscriptions.
+    • Developed custom subscription module for auto-payment as mango pay does
+      not support subscriptions.
 
-### Project #8: Labletone
+### Project #9: Labletone
 
 It was an app where artists can register and showcase their songs. Music companies can listen to the songs uploaded by artists and can hire them.
 
@@ -205,18 +225,6 @@ It was an app where artists can register and showcase their songs. Music compani
     • Worked on Desktop notifications.
     • Stripe integration for payment.
 
-### Project #9: IOT
-Currently working on a IOT project in which devices need to be controlled with voice commands.
-
-- Hardware : Raspberry pi and arduino(for testing)
-- Programming Language : Python
-- Third party apis : Google apis or snowboy(both can be used according to requirement)
-
-##### Job roles and responsibilities:
-
-    • Working as a technical lead and handling a team.
-    • Imparting training of modules as per required by project.
-    • Analysing requirements and developing accordingly for customer satisfaction.
 
 
 
