@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Sheenam Narula">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Syntax of import/export : file : exportVar.js
+export const m = 1 ;  file : importVar.js
+import {m} from exportVar.js  Syntax of require : file : exportVar.js
+const m = 1; module.exports = m ;  file: importVar.js
+const m = require(&#39;./exportVar.js&#39;)  Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/import-require/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.8579d44307000b8b3469eec9b7f7fc17.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/import-require/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Sheenam Narula">
+  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/import-require/">
+  <meta property="og:title" content="Import Vs Require | Sheenam Narula">
+  <meta property="og:description" content="Syntax of import/export : file : exportVar.js
+export const m = 1 ;  file : importVar.js
+import {m} from exportVar.js  Syntax of require : file : exportVar.js
+const m = 1; module.exports = m ;  file: importVar.js
+const m = require(&#39;./exportVar.js&#39;)  Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-31T00:00:00&#43;05:30">
+  
+  <meta property="article:modified_time" content="2019-07-31T00:00:00&#43;05:30">
+  
+
+  
+
+  
+
+  <title>Import Vs Require | Sheenam Narula</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Sheenam Narula</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Import Vs Require</h1>
+
+  
+  <p class="page-subtitle">This article is about whether to use import or require and why node js still does not support import/export.</p>
+  
+
+  
+    
+
+
+
+<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="datePublished">
+<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 31, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h4 id="syntax-of-import-export">Syntax of import/export :</h4>
+
+<p>file : exportVar.js</p>
+
+<pre><code>export const m = 1 ;
+</code></pre>
+
+<p>file : importVar.js</p>
+
+<pre><code>import {m} from exportVar.js
+</code></pre>
+
+<h5 id="syntax-of-require">Syntax of require :</h5>
+
+<p>file : exportVar.js</p>
+
+<pre><code>const m = 1;
+module.exports = m ;
+</code></pre>
+
+<p>file: importVar.js</p>
+
+<pre><code>const m = require('./exportVar.js')
+</code></pre>
+
+<h3 id="loading-strategy">Loading Strategy :</h3>
+
+<p>Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules.
+But in case of require(), synchronous loading of modules takes place.
+It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely.But in case of require, loading of second module will start after loading of first module is completed.</p>
+
+<p>This is the key difference between import/export and require.</p>
+
+<p>To get more deep in to this, we need to know how ES6 structure is working and how it is different from Common js.</p>
+
+<p>The key difference between the Common JS and ES6 modules is when to know the shape of module.</p>
+
+<p>In Common JS, when a module is exported, the steps performed before execution is given in this figure.</p>
+
+<p><img src="/img/common-js-steps.png" alt="Example image" /></p>
+
+<p>Here the common mistake that most of the developers make in understanding the loading step.
+In loading step, it is determined that what kind of thing is pointed by absolute path that is obtained on completion of resolution step.If it is Node.js native module, then dynamic linking of module is decided. On the other hand, if it is JSON file, the content is loaded in memory for further use.
+Here is the trick, in wrapper step, before evaluation, the loaded Javasacript is wrapped in a function. For e.g.</p>
+
+<p>In file, example.js</p>
+
+<pre><code>const m = 1;
+module.exports.m = m;
+</code></pre>
+
+<p>code is actually wrapped and passed to evaluation in below function format :</p>
+
+<pre><code>function (exports, require, module, **filename, **dirname) {
+const m = 1;
+module.exports.m = m;
+}
+</code></pre>
+
+<p>Here the exports is a parameter for wrapper function and it is a normal javascript object. So when the wrapper function is evaluated, it returns the exports object which is then used as a result of require(). The main point to note here is that, there is no way to determine as what kind of module is being exported by Common JS until the evaluation of wrapper.</p>
+
+<p>On the other hand, if we use import/export i.e. ES6 feature, the equivalent code of above example is :</p>
+
+<p>In file, example.js</p>
+
+<pre><code>export const m = 1;
+import {m} from './example.js'
+</code></pre>
+
+<p>In this case, the shape of m is actually determined at the parsing step i.e before evaluation step. Actually, while parsing, and before evaluation, a Module Record is created, where a static listing of modules that have been exported in code are listed and verified. That means, it is verified first whether the exported m exists or not and link between import file and exported module i.e. m is eastablished. Only after creation of this module record, code is actually evaluated.
+Here the key point is, before even evaluation of code, the shape of module is known or we can say that, import/export is resolved before evaluation of code.</p>
+
+<h2 id="challenge-for-node-js">Challenge for Node.js :</h2>
+
+<p>Here is the challenge for Node.js comes up when exported module is not an ESM i.e ECMASCRIPT Module but a Common JS module because while importing with import statement or according to ES6 structure, shape of module should be known before evaluation but in case of Common JS module it becomes impossible to determine shape of code before evaluation step due to wrapper function.</p>
+
+<p>To resolve this challenge, one proposal came up in which it was proposed that if a module is ESM module, then it will be directly added to list of Module Record but if it is not i.e if it is a Common JS module, then rather than giving error or giving up, the verification step will be left in pending state and a process of evaluation of that module will be executed. After getting confirmation of existence of that module, Module Record will be created.</p>
+
+<p>But again for the implementation of this proposal, Node js requires some mechanism to identify whether the module is ESM or Common JS Module. Various approaches have been suggested but Michael Jackson Script is supposed to be accepted.</p>
+
+<h3 id="michael-jackson-script">Michael Jackson Script :</h3>
+
+<p>In this a new file extension *.mjs is supposed to be introduced for ESM modules.
+Right now, Node is distinguishing between the modules like this :</p>
+
+<p>.node files : native modules</p>
+
+<p>.js : Common JS modules</p>
+
+<p>.json : JSON files</p>
+
+<p>Now *.mjs will specify that the module is ESM and it should be loaded with the right mechanism.
+The key point here is by knowing the extensions of file, loading mechanism will be selected. For Common JS module, evaluation of module will be done first so that verification of existence can be done.</p>
+
+<p>E.g. There are two files common.js and esm.mjs</p>
+
+<pre><code>import c from './common.js'
+</code></pre>
+
+<p>will be treated as Common js module</p>
+
+<pre><code>import e from './esm.mjs'
+</code></pre>
+
+<p>will be treated as ESM module</p>
+
+<h2 id="what-to-do-if-i-want-to-use-es6-import-export-feature-in-project">What to do if i want to use ES6 import/export feature in project?</h2>
+
+<h4 id="answer-is-babel">Answer is Babel</h4>
+
+<p>If we want to use import/export feature of ES6, we need to use babel which transpiles code in Common JS. Here is a point which needs to be understood that Babel only converts the syntax to Common JS syntax so that it can be resolved by Node js, but implementation is according to ESM only.</p>
+
+<p>Example: If we see named imports like</p>
+
+<pre><code>import {a,b} from 'ab';
+</code></pre>
+
+<p>This syntax will work only if ab is an ESM. But if it is Common JS module, it is not possible to use this syntax as shape of code can&rsquo;t be determined until evaluation is done in this case.</p>
+
+<p>But here BABEL does a perfect job for us by converting ES6 syntax to Common JS syntax and we get the required implementation.</p>
+
+<h2 id="significance-of-using-es6-structure">Significance of using ES6 structure :</h2>
+
+<p>In case of ES6 structure, the first step of loading the contents of file from disk is quite similar but may happen asynchronously. When the content of files is available, they are parsed. While parsing, the shape of exported module is determined and linked to respective import.That means all exports and imports will know their targets before evaluation itself i.e. they are resolved before execution step and that too happen asynchronously.
+In node.js terms, we can say that loading scripts, resolution of import and export and evaluation of module code occur over multiple turns of the event loop.</p>
+
+<h3 id="practical-example">Practical Example :</h3>
+
+<p>module a and b, both does not exist. b is imported using require and a is imported using import. Now due to use of require, existence of b is not verified and code does not throw error for non-existence of b. But in case of module a, existence of a is verified and code throws error for a at very early stage i.e at parsing step only.</p>
+
+<p><img src="/img/example-import-require.png" alt="Example image" /></p>
+
+<p><img src="/img/error-import-require.png" alt="Example image" /></p>
+
+    </div>
+
+    
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  
+  <img class="portrait mr-3" src="/author/admin/avatar_hue2b8f8f696eee3ccf5584f279cb1e08d_133025_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Sheenam Narula</a></h5>
+    <h6 class="card-subtitle">Backend Developer</h6>
+    <p class="card-text" itemprop="description">My interests are doing things which i find interesting at particular moment.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+
