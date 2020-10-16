@@ -102,7 +102,7 @@ project/build.properties — this file contains build definition of build.">
     
     
     
-    <link rel="stylesheet" href="/css/academic.8579d44307000b8b3469eec9b7f7fc17.css">
+    <link rel="stylesheet" href="/css/academic.d343353a722af4a7fe37c7930aa2f406.css">
   
 
   
@@ -401,54 +401,33 @@ project/build.properties — this file contains build definition of build.">
 
     <div class="article-style" itemprop="articleBody">
       <p>.idea/— contains IntelliJ’s project specific settings files. According to JetBrains, normally there is no need to edit the contents of this folder.</p>
-
 <p>build.sbt — contains build definition of the project. For example, project name, project version, scalaVersion, libraryDependencies, etc. Note that this file is written in Scala.</p>
-
 <p>project/—because build.sbt is written in Scala, we need to build build.sbt. Therefore, this folder contains all the files needed for building build.sbt.</p>
-
 <p>project/build.properties — this file contains build definition of build.sbt. For example, it defines sbt version.</p>
-
 <p>project/target/— contains artifacts from building build.sbt.</p>
-
 <p>src/—this is where we put our source files. sbt uses the same directory structure as Maven for source files by default. Other directories in src/ will be ignored in build time.</p>
-
 <p>src/main/scala — contains main .scala files</p>
-
 <p>src/main/java — contains main .java files</p>
-
 <p>src/main/resources — contains main files other than .scala/.java files</p>
-
 <p>src/test/scala — contains test .scala files</p>
-
 <p>src/test/java — contains test .java files</p>
-
 <p>src/test/resources — contains test files other than .scala/.java files</p>
-
 <p>target/— contains artifacts from building the project</p>
-
 <p>println(&ldquo;Hello World&rdquo;)
 Where should we chuck it?</p>
-
 <p>Normally when you run a Scala sbt project, it will use the main function as the entry point to run the project. So another question — where should we chuck the main function?</p>
-
 <p>Because sbt needs to call the main function from an object, the answer is that we write it in a Scala object like this:</p>
-
 <p>object HelloWorldMain {
 def main(args: Array[String]): Unit = {
 println(&ldquo;Hello World&rdquo;)
 }
 }
 So, let’s create a package called com.helloworld (alternatively you can use your domain name in reverse order) in src/main/scala.</p>
-
 <p>Then right-click on the package and select New -&gt; Scala Class. We will name the class HelloWorldMain. Before you click OK, remember to change Kind from Class to Object for the reason we mentioned earlier.</p>
-
 <p>You can add the code snippet we discussed earlier in the file.</p>
-
 <p>Build and Run the project
 Now you should be able to see two green arrows next to your main function. Clicking either of them will build and run the project.</p>
-
 <p>Then you will see the “Hello World” text printed out in the Run tool window in Intellij.</p>
-
 <p>And the build artifact can be found in target/scala-2.12/classes.</p>
 
     </div>
@@ -543,10 +522,8 @@ Now you should be able to see two green arrows next to your main function. Click
   <p class="powered-by">
     
 
-    Powered by the
-    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
+    
+      
     
     <span class="float-right" aria-hidden="true">
       <a href="#" id="back_to_top">
@@ -680,7 +657,7 @@ Now you should be able to see two green arrows next to your main function. Click
     
     
     
-    <script src="/js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
 
   </body>
 </html>

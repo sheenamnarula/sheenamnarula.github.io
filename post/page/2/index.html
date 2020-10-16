@@ -27,11 +27,10 @@
   
     
   
-  <meta name="description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.">
+  <meta name="description" content="Backend Developer">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/">
 
   
 
@@ -108,12 +107,15 @@ When you write small programs that consist of only one, or just two or three sou
   
 
   
+  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Sheenam Narula">
+  <link rel="feed" href="/post/index.xml" type="application/rss+xml" title="Sheenam Narula">
+  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/">
 
   
   
@@ -125,22 +127,19 @@ When you write small programs that consist of only one, or just two or three sou
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Sheenam Narula">
-  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/scala/">
-  <meta property="og:title" content="Scala Part-1 | Sheenam Narula">
-  <meta property="og:description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
+  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/">
+  <meta property="og:title" content="Posts | Sheenam Narula">
+  <meta property="og:description" content="Backend Developer"><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-19T00:00:00&#43;05:30">
-  
-  <meta property="article:modified_time" content="2019-06-19T00:00:00&#43;05:30">
+  <meta property="og:updated_time" content="2020-10-16T00:00:00&#43;05:30">
   
 
   
 
   
 
-  <title>Scala Part-1 | Sheenam Narula</title>
+  <title>Posts | Sheenam Narula</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -300,9 +299,7 @@ When you write small programs that consist of only one, or just two or three sou
 </nav>
 
 
-<article class="article" itemscope itemtype="http://schema.org/Article">
 
-  
 
 
 
@@ -319,99 +316,25 @@ When you write small programs that consist of only one, or just two or three sou
 
   
   
-  
-<div class="article-container pt-3">
-  <h1 itemprop="name">Scala Part-1</h1>
-
-  
-  <p class="page-subtitle">What is SBT?</p>
-  
-
   
     
-
-
-
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="dateModified">
-
-<div class="article-metadata">
+  
+<div class="universal-wrapper pt-3">
+  <h1 itemprop="name">Posts</h1>
 
   
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    <time>Jun 19, 2019</time>
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-
-  
-
-  
-    
-
-  
-
-</div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 </div>
 
 
 
-  <div class="article-container">
+<div class="universal-wrapper">
 
-    <div class="article-style" itemprop="articleBody">
-      <p>SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.</p>
-<p>When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.</p>
-<p>But when you start working on a bigger project with dozens or maybe even hundreds of source files, then it becomes too tedious to compile all those source files manually. You will then want to use a build tool to manage compiling all those source files.</p>
-<p>sbt is such a tool. There are other tools too, some other well-known build tools that come from the Java world are Ant and Maven.</p>
-<p>How it works is that you create a project file that describes what your project looks like; when you use sbt, this file will be called build.sbt. That file lists all the source files your project consists of, along with other information about your project. Sbt will read the file and then it knows what to do to compile the complete project.</p>
-<p>Besides managing your project, some build tools, including sbt, can automatically manage dependencies for you. This means that if you need to use some libraries written by others, sbt can automatically download the right versions of those libraries and include them in your project for you.</p>
-<p>Let’s look at how to use published libraries to add extra functionality to our apps.</p>
-<p>Open up build.sbt and add the following line:</p>
-<pre><code>libraryDependencies += &quot;org.scala-lang.modules&quot; %% &quot;scala-parser-combinators&quot; % &quot;1.1.0&quot;
-</code></pre><p>Here, libraryDependencies is a set of dependencies, and by using +=, we’re adding the scala-parser-combinators dependency to the set of dependencies that sbt will go and fetch when it starts up. Now, in any Scala file, you can import classes, objects, etc, from scala-parser-combinators with a regular import.</p>
+  
 
-    </div>
-
-    
-
-
+  
+  
     
       
 
@@ -420,78 +343,68 @@ When you write small programs that consist of only one, or just two or three sou
 
 
 
-  
 
 
-
-
-
-
-
-<div class="media author-card" itemscope itemtype="http://schema.org/Person">
   
   
-  <img class="portrait mr-3" src="/author/admin/avatar_hue2b8f8f696eee3ccf5584f279cb1e08d_133025_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+
+
+<div class="view-list-item" itemscope itemtype="http://schema.org/BlogPosting">
+  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
+  <a href="/post/cold-war/" itemprop="url"><span itemprop="name">Cold War</span></a>
+
   
 
-  <div class="media-body">
-    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Sheenam Narula</a></h5>
-    <h6 class="card-subtitle">Backend Developer</h6>
-    <p class="card-text" itemprop="description">My interests are doing things which i find interesting at particular moment.</p>
-    <ul class="network-icon" aria-hidden="true">
-      
-      
-      
-      
-        
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="/#contact" >
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-      
-      
-      
-      
-        
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i>
-        </a>
-      </li>
-      
-    </ul>
-  </div>
+  
+
+  
+
 </div>
 
-
-
+    
+  
+    
       
-      
-    
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="view-list-item" itemscope itemtype="http://schema.org/BlogPosting">
+  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
+  <a href="/post/basic-electronics/" itemprop="url"><span itemprop="name">Basic Electronics Part-1</span></a>
+
+  
+
+  
+
+  
+
+</div>
 
     
+  
 
+  
+<nav>
+  <ul class="pagination justify-content-center">
     
+    <li class="page-item"><a class="page-link" href="/post/">&laquo;</a></li>
+    
+    
+  </ul>
+</nav>
 
 
-  </div>
-</article>
 
+</div>
 <div class="container">
   <footer class="site-footer">
   

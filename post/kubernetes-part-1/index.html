@@ -101,7 +101,7 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
     
     
     
-    <link rel="stylesheet" href="/css/academic.8579d44307000b8b3469eec9b7f7fc17.css">
+    <link rel="stylesheet" href="/css/academic.d343353a722af4a7fe37c7930aa2f406.css">
   
 
   
@@ -127,22 +127,22 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
   
   <meta property="og:site_name" content="Sheenam Narula">
   <meta property="og:url" content="http://sheenamnarula1993.github.io/post/kubernetes-part-1/">
-  <meta property="og:title" content="Kubernetes Part-1 | Sheenam Narula">
+  <meta property="og:title" content="Kubernetes Architecture | Sheenam Narula">
   <meta property="og:description" content="Kubernetes Vocab : Node : It is an instance of computer which is also known as worker nodes.
 Pods : It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&rsquo;s image. Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.
 When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-29T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2020-10-15T00:00:00&#43;05:30">
   
-  <meta property="article:modified_time" content="2019-07-29T00:00:00&#43;05:30">
-  
-
+  <meta property="article:modified_time" content="2020-10-15T00:00:00&#43;05:30">
   
 
   
 
-  <title>Kubernetes Part-1 | Sheenam Narula</title>
+  
+
+  <title>Kubernetes Architecture | Sheenam Narula</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -323,7 +323,7 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Kubernetes Part-1</h1>
+  <h1 itemprop="name">Kubernetes Architecture</h1>
 
   
   <p class="page-subtitle">This article is about Kubernetes architecture.</p>
@@ -334,8 +334,8 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
 
 
 
-<meta content="2019-07-29 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-07-29 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2020-10-15 00:00:00 &#43;0530 IST" itemprop="datePublished">
+<meta content="2020-10-15 00:00:00 &#43;0530 IST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -348,7 +348,7 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
     
       
     
-    <time>Jul 29, 2019</time>
+    <time>Oct 15, 2020</time>
   </span>
   
 
@@ -357,7 +357,7 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    5 min read
   </span>
   
 
@@ -398,56 +398,33 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<h2 id="kubernetes-vocab">Kubernetes Vocab :</h2>
-
-<h3 id="node">Node :</h3>
-
+      <h2 id="kubernetes-vocab-">Kubernetes Vocab :</h2>
+<h3 id="node-">Node :</h3>
 <p>It is an instance of computer which is also known as worker nodes.</p>
-
-<h3 id="pods">Pods :</h3>
-
+<h3 id="pods-">Pods :</h3>
 <p>It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&rsquo;s image.
 Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.</p>
-
 <p>When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes. That means everything related to pod lifecycle dies with that pod.(stable ip address concept)</p>
-
-<h3 id="services">Services :</h3>
-
+<h3 id="services-">Services :</h3>
 <p>Services are the end points that export ports to outside world and map the ports to pods.</p>
-
-<h3 id="deployment">Deployment :</h3>
-
+<h3 id="deployment-">Deployment :</h3>
 <p>It represents a set of multiple identical pods.Deployments run multiple instances or replicas of your application.It ensures the availability of one or more instances of app to serve user requests.Deployments are managed by kubernetes deployment controller.
 Deployments use a Pod template, which contains a specification for its Pods. The Pod specification determines how each Pod should look like: what applications should run inside its containers, which volumes the Pods should mount, its labels, and more.</p>
-
 <p>When a Deployment&rsquo;s Pod template is changed, new Pods are automatically created one at a time.</p>
-
-<h1 id="kubernetes-architecture">KUBERNETES ARCHITECTURE :</h1>
-
-<p><img src="/img/kubernetes-architecture.png" alt="Example image" /></p>
-
-<h3 id="kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler">Kubernetes Master Components: Etcd, API Server, Controller Manager, and Scheduler :</h3>
-
+<h1 id="kubernetes-architecture-">KUBERNETES ARCHITECTURE :</h1>
+<p><img src="/img/kubernetes-architecture.png" alt="Example image"></p>
+<h3 id="kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-">Kubernetes Master Components: Etcd, API Server, Controller Manager, and Scheduler :</h3>
 <p>Kubernetes master is considered as the brain of kubernetes cluster. It run Etcd, Scheduler, Controller Manager and Api Server inside it.Lets discuss there components briefly so that working on kubernetes should not appear to be strange and knowing components of kubernetes master will help us in a significant way in creating a working image of kubernetes master.</p>
-
-<h4 id="etcd">Etcd :</h4>
-
+<h4 id="etcd-">Etcd :</h4>
 <p>Etcd is a very important part of kubernetes master node. It saves the configuration data of kubernetes cluster like which nodes are there,how many pods are there and which pod is running on which node and a lot more information regarding cluster state. Kubernetes master reads and write data to etcd to get the current state and decides the required logical operations to be performed to achieve the desired state.
 Etcdctl is a command line interface to manage Etcd through which many operations for etcd can be performed like adding and removing key-value pairs(etcd data storage format is key value pair), verify cluster health, generating database snapshots(As Kubernetes master is highly dependent on etcd for data, so we should have a backup plan for etcd. We can save a snapshot of etcd by using etcdctl save snapshot command).</p>
-
 <p>Etcd also impelements a &ldquo;watcher&rdquo; feature in which for every key there is a watcher. Whenever key changes, watcher is notified and in return an event is triggered for Api server. After listening to event, api server takes important decisions of operations to be performed to move current state towards desired state.</p>
-
-<h4 id="api-server">Api Server :</h4>
-
+<h4 id="api-server-">Api Server :</h4>
 <p>(The REST API is the fundamental fabric of Kubernetes. All operations and communications between components, and external user commands are REST API calls that the API Server handles. Consequently, everything in the Kubernetes platform is treated as an API object and has a corresponding entry in the API.)
 Kubernetes api server is a main management point of kubernetes cluster.Basically when we interact with kubernetes using kubectl command line interface, we are actually communicating with Api server component. Only Api server component directly communicates with Etcd to read, write and update objects after validating requests. Rest all components has to go through Api server to work with cluster state.
 The API Server also implements a watch mechanism (similar to etcd) for clients to watch for changes. This allows components such as the Scheduler and Controller Manager to interact with the API Server in a loosely coupled manner.
 For example :</p>
-
-<p><img src="/img/createPod.png" alt="Example image" /></p>
-
+<p><img src="/img/createPod.png" alt="Example image"></p>
 <ol>
 <li>kubectl writes to api server</li>
 <li>Api server writes to etcd after validating request.</li>
@@ -461,38 +438,26 @@ For example :</p>
 <li>Kubelet updates the status to Api server.</li>
 <li>Api server interacts with etcd to persist new state.</li>
 </ol>
-
-<h4 id="controller-manager">Controller Manager :</h4>
-
+<h4 id="controller-manager-">Controller Manager :</h4>
 <p>Controller manager watches the cluster state through Api server and when it gets notified, it makes necessary changes to move current state of cluster towards desired state.For e.g. Replication controller always maintains the required number of replicas of pods.</p>
-
-<h4 id="scheduler">Scheduler :</h4>
-
+<h4 id="scheduler-">Scheduler :</h4>
 <p>Scheduler watches for unscheduled pods and decides as which pod has to run on which node.
 Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked which in turn calls container engine like docker to create and start container.</p>
-
-<h3 id="kubernetes-node-components">Kubernetes Node Components :</h3>
-
+<h3 id="kubernetes-node-components-">Kubernetes Node Components :</h3>
 <p>Basically, Kubernetes node runs Kubelet and Service Proxy components. It also runs container engine like Docker which in turn runs containerized applications.</p>
-
-<h4 id="kubelet">Kubelet :</h4>
-
+<h4 id="kubelet-">Kubelet :</h4>
 <p>It&rsquo;s an agent that runs on each node and being a watcher it reports activities of pods to api server.It makes sure that pods attached to its node are running. It talks to docker daemon through docker socket api and which in turn is responsible for running containers.</p>
-
-<p>Jobs of kubelet :
-1. Run the pods.
-2. Report the status of node and pods to api server.
-3. Run container probes.</p>
-
+<p>Jobs of kubelet :</p>
+<ol>
+<li>Run the pods.</li>
+<li>Report the status of node and pods to api server.</li>
+<li>Run container probes.</li>
+</ol>
 <h6 id="cadvisor">cAdvisor</h6>
-
-<p>The Kubelet ships with built-in support for cAdvisor, which collects, aggregates, processes and exports metrics (such as CPU, memory, file and network usage) about running containers on a given node. cAdvisor includes a built-in web interface available on port 4194 (just open your browser and navigate to http://<node-ip>:4194/).</p>
-
-<p>You can view the cAdvisor /metrics endpoint by issuing a GET request to http://<node-ip>:4194/metrics.</p>
-
-<h4 id="service-proxy">Service Proxy :</h4>
-
-<p>Service Proxy runs on each node and is responsible for watching the api server for pods and services definitions&rsquo; changes to keep the entire network&rsquo;s configuration up to date,ensuring that one pod can talk to another pod,one node can talk to another node, one container can talk to another container.In addition to this, it maintains all ip route tables so that it can redirect user request to a correct backend resource. That is why, when we hit the Node port, even if app is not available on that node but it redirects the request to the correct backend resource for execution.</p>
+<p>The Kubelet ships with built-in support for cAdvisor, which collects, aggregates, processes and exports metrics (such as CPU, memory, file and network usage) about running containers on a given node. cAdvisor includes a built-in web interface available on port 4194 (just open your browser and navigate to http://<!-- raw HTML omitted -->:4194/).</p>
+<p>You can view the cAdvisor /metrics endpoint by issuing a GET request to http://<!-- raw HTML omitted -->:4194/metrics.</p>
+<h4 id="service-proxy-">Service Proxy :</h4>
+<p>Service Proxy runs on each node and is responsible for watching the api server for pods and services definitions' changes to keep the entire network&rsquo;s configuration up to date,ensuring that one pod can talk to another pod,one node can talk to another node, one container can talk to another container.In addition to this, it maintains all ip route tables so that it can redirect user request to a correct backend resource. That is why, when we hit the Node port, even if app is not available on that node but it redirects the request to the correct backend resource for execution.</p>
 
     </div>
 
@@ -586,10 +551,8 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
   <p class="powered-by">
     
 
-    Powered by the
-    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
+    
+      
     
     <span class="float-right" aria-hidden="true">
       <a href="#" id="back_to_top">
@@ -723,7 +686,7 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
     
     
     
-    <script src="/js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
 
   </body>
 </html>

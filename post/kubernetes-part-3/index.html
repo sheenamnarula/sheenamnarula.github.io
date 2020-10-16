@@ -27,11 +27,13 @@
   
     
   
-  <meta name="description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.">
+  <meta name="description" content="In this post, we will understand the different parts of configuration file of kubernetes by deploying a node application. For this post, you can find github code at :
+https://github.com/sheenamnarula/Node-mongo-kubernetes Refer this repository that contains dockerised node application code and configuration files for kubernetes deployment for better understanding.
+Second Option : Create a node app and dockerise it. For dockerisation of node app, you can follow below post :
+ http://sheenamnarula93.">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/kubernetes-part-3/">
 
   
 
@@ -113,7 +115,7 @@ When you write small programs that consist of only one, or just two or three sou
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/kubernetes-part-3/">
 
   
   
@@ -125,22 +127,24 @@ When you write small programs that consist of only one, or just two or three sou
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Sheenam Narula">
-  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/scala/">
-  <meta property="og:title" content="Scala Part-1 | Sheenam Narula">
-  <meta property="og:description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
+  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/kubernetes-part-3/">
+  <meta property="og:title" content="Kubernetes Configuration file | Sheenam Narula">
+  <meta property="og:description" content="In this post, we will understand the different parts of configuration file of kubernetes by deploying a node application. For this post, you can find github code at :
+https://github.com/sheenamnarula/Node-mongo-kubernetes Refer this repository that contains dockerised node application code and configuration files for kubernetes deployment for better understanding.
+Second Option : Create a node app and dockerise it. For dockerisation of node app, you can follow below post :
+ http://sheenamnarula93."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-19T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2020-10-16T00:00:00&#43;05:30">
   
-  <meta property="article:modified_time" content="2019-06-19T00:00:00&#43;05:30">
-  
-
+  <meta property="article:modified_time" content="2020-10-16T00:00:00&#43;05:30">
   
 
   
 
-  <title>Scala Part-1 | Sheenam Narula</title>
+  
+
+  <title>Kubernetes Configuration file | Sheenam Narula</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -321,10 +325,10 @@ When you write small programs that consist of only one, or just two or three sou
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Scala Part-1</h1>
+  <h1 itemprop="name">Kubernetes Configuration file</h1>
 
   
-  <p class="page-subtitle">What is SBT?</p>
+  <p class="page-subtitle">Deployment of Node App to kubernetes</p>
   
 
   
@@ -332,8 +336,8 @@ When you write small programs that consist of only one, or just two or three sou
 
 
 
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2020-10-16 00:00:00 &#43;0530 IST" itemprop="datePublished">
+<meta content="2020-10-16 00:00:00 &#43;0530 IST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -346,7 +350,7 @@ When you write small programs that consist of only one, or just two or three sou
     
       
     
-    <time>Jun 19, 2019</time>
+    <time>Oct 16, 2020</time>
   </span>
   
 
@@ -355,7 +359,7 @@ When you write small programs that consist of only one, or just two or three sou
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    4 min read
   </span>
   
 
@@ -396,16 +400,156 @@ When you write small programs that consist of only one, or just two or three sou
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.</p>
-<p>When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.</p>
-<p>But when you start working on a bigger project with dozens or maybe even hundreds of source files, then it becomes too tedious to compile all those source files manually. You will then want to use a build tool to manage compiling all those source files.</p>
-<p>sbt is such a tool. There are other tools too, some other well-known build tools that come from the Java world are Ant and Maven.</p>
-<p>How it works is that you create a project file that describes what your project looks like; when you use sbt, this file will be called build.sbt. That file lists all the source files your project consists of, along with other information about your project. Sbt will read the file and then it knows what to do to compile the complete project.</p>
-<p>Besides managing your project, some build tools, including sbt, can automatically manage dependencies for you. This means that if you need to use some libraries written by others, sbt can automatically download the right versions of those libraries and include them in your project for you.</p>
-<p>Let’s look at how to use published libraries to add extra functionality to our apps.</p>
-<p>Open up build.sbt and add the following line:</p>
-<pre><code>libraryDependencies += &quot;org.scala-lang.modules&quot; %% &quot;scala-parser-combinators&quot; % &quot;1.1.0&quot;
-</code></pre><p>Here, libraryDependencies is a set of dependencies, and by using +=, we’re adding the scala-parser-combinators dependency to the set of dependencies that sbt will go and fetch when it starts up. Now, in any Scala file, you can import classes, objects, etc, from scala-parser-combinators with a regular import.</p>
+      <h3 id="in-this-post-we-will-understand-the-different-parts-of-configuration-file-of-kubernetes-by-deploying-a-node-application">In this post, we will understand the different parts of configuration file of kubernetes by deploying a node application.</h3>
+<p>For this post, you can find github code at :</p>
+<pre><code>https://github.com/sheenamnarula/Node-mongo-kubernetes
+</code></pre><p>Refer this repository that contains dockerised node application code  and configuration files for kubernetes deployment for better understanding.</p>
+<h3 id="second-option-">Second Option :</h3>
+<p>Create a node app and dockerise it. For dockerisation of node app, you can follow below post :</p>
+<pre><code> http://sheenamnarula93.com/post/express-docker-aws-1/
+
+</code></pre><h2 id="kubernetes-configuration-file-">Kubernetes Configuration File :</h2>
+<p>Folder Location for files in cloned repository : k8s</p>
+<pre><code> Node app file : k8s/node-app.yaml
+
+ Mongo file : k8s/mongodb.yaml
+</code></pre><h2 id="explanation-of-files-">Explanation of files :</h2>
+<pre><code>apiVersion : apps/v1
+</code></pre><ul>
+<li>This line describes the Kubernetes API versions to be used to create the resource.</li>
+</ul>
+<pre><code>kind : Deployment
+</code></pre><ul>
+<li>This line describes the type of resource to be created.</li>
+</ul>
+<pre><code>metadata : 
+ labels : 
+   app : node-app
+ name : node-app
+
+</code></pre><h3 id="metadata-">Metadata :</h3>
+<ul>
+<li>attaches meta-information regarding the resource such as its name or labels.</li>
+</ul>
+<pre><code>spec:
+  replicas : 1
+  selector :
+    matchLabels : 
+      app : node-app-pod
+  template : 
+    metadata : 
+      labels : 
+        app : node-app-pod
+    spec :
+      containers : 
+      - name: node-application
+        env :
+        - name : DB_URI
+          value : mongodb://mongodb-service:27017/node-application
+        image : sheenam1993/node-application
+        ports : 
+        - containerPort: 3007
+      restartPolicy: Always
+
+</code></pre><h3 id="spec">Spec</h3>
+<ul>
+<li>describes the specifications of resources</li>
+</ul>
+<p>The deployment resources are used to manage and control the life cycle of applications Pods.
+As a result,the spec section for the deployment resource is containing information about the applications Pod and how to control them, below is a brief description of the basic sections that are required for Deployment Spec:</p>
+<ul>
+<li>
+<h3 id="replicas">Replicas:</h3>
+</li>
+</ul>
+<p>an integer that specifies how many pods the deployment should create.</p>
+<ul>
+<li>
+<h3 id="selectors">Selectors:</h3>
+</li>
+</ul>
+<p>this configuration section specifies the conditions used to select the Pods managed by Deployment. For instance, in the example that we are going to use, Pods that have the label app: mongodb-pod will be managed by the Deployment resource.</p>
+<h3 id="template-">Template :</h3>
+<p>this section contains the configurations of the Pods.</p>
+<p>The Template section contains the following subsections:</p>
+<ul>
+<li>
+<h3 id="metadata">Metadata</h3>
+</li>
+</ul>
+<p>The information that will be attached to every Pod created by our Deployment. The labels defined in this section must match the ones used in the selector sections so that the deployment can manage the Pods after their creation.</p>
+<ul>
+<li>
+<h3 id="spec-1">Spec</h3>
+</li>
+</ul>
+<p>The specifications of the Pod containers (notice that containers sections is a list and can include more than one container definition). Here we can define specific container configurations such as the image name, the attached volumes, restart policy and used ports.</p>
+<h2 id="service-in-kubernetes">Service in Kubernetes</h2>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: node-app-pod
+  name: node-app-service
+spec:
+  ports:
+  - port: 8080
+    targetPort: 3007
+    nodePort: 30007
+  selector:
+    app: node-app-pod
+  type: NodePort
+
+</code></pre><p>A service makes pods available for interaction to other application pods in the cluster.</p>
+<p>Explanation of Service Code :</p>
+<pre><code>kind: Service
+</code></pre><p>Kind describes the type of resource to be created. So while creating service, its value is &ldquo;Service&rdquo;</p>
+<pre><code>metadata:
+  labels:
+    app: node-app-pod
+  name: node-app-service
+</code></pre><p>Metadata describes the information about the service. Here we have given two thing under meta data : labels and name.</p>
+<p>A service can be called by another service in cluster by name.</p>
+<pre><code>spec:
+  ports:
+  - port: 8080
+    targetPort: 3007
+    nodePort: 30007
+  selector:
+    app: node-app-pod
+  type: NodePort
+</code></pre><p>Spec describes specifications of servoice. Here is description of spec code :</p>
+<ul>
+<li>
+<h3 id="ports">ports</h3>
+</li>
+</ul>
+<p>ports contain 3 parts further :
+port : exposed port of service (for other services)</p>
+<ul>
+<li>
+<h3 id="targetport">targetPort</h3>
+</li>
+</ul>
+<p>exposed port of a pod (means on which our app is running)</p>
+<ul>
+<li>
+<h3 id="nodeport">nodePort</h3>
+</li>
+</ul>
+<p>exposed port to access service from outside the cluster (means if we have to expose the service to end user to run, we have to use nodePort)</p>
+<ul>
+<li>
+<h3 id="selector">selector</h3>
+</li>
+</ul>
+<p>the conditions used to select Pods managed by the service resource.</p>
+<ul>
+<li>
+<h3 id="type-">type :</h3>
+</li>
+</ul>
+<p>Kubernetes supports a couple of service types for managing internal and external traffic. Since MongoDB should not be accessed by any external entity, we will create a ClusterIP service that will expose the service on a cluster-internal IP (only accessible by Pods in the same cluster).But for Node app we have created NodePort service type which can be accessed from outside the cluster as well.</p>
 
     </div>
 

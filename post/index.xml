@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Sheenam Narula</title>
@@ -6,10 +6,40 @@
     <description>Recent content in Posts on Sheenam Narula</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0530</lastBuildDate><atom:link href="http://sheenamnarula1993.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Configuration file</title>
+      <link>http://sheenamnarula1993.github.io/post/kubernetes-part-3/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/kubernetes-part-3/</guid>
+      <description>In this post, we will understand the different parts of configuration file of kubernetes by deploying a node application. For this post, you can find github code at :
+https://github.com/sheenamnarula/Node-mongo-kubernetes Refer this repository that contains dockerised node application code and configuration files for kubernetes deployment for better understanding.
+Second Option : Create a node app and dockerise it. For dockerisation of node app, you can follow below post :
+ http://sheenamnarula93.</description>
+    </item>
     
-	<atom:link href="http://sheenamnarula1993.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Local System Set up</title>
+      <link>http://sheenamnarula1993.github.io/post/kubernetes-part-2/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/kubernetes-part-2/</guid>
+      <description>Get started with Kubernetes on local system To get started with kubernetes on your local system, you can use minikube. Minikube is basically local kubernets which helps to learn and develop kubernetes locally.All you need is Docker (or similarly compatible) container or a Virtual Machine environment
+Installation process and important commands of minikube is given as below :
+Installation of minikube on Linux curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux- sudo install minikube-linux-amd64 /usr/local/bin/minikube Command to Start cluster minikube start Command to Stop cluster minikube stop Command to Delete cluster minikube delete --all Minikube Dashboard There are commands to manage and access cluster but for ease, we will use dashboard provided by minikube where each and every detail of cluster can be seen and managed.</description>
+    </item>
     
+    <item>
+      <title>Kubernetes Architecture</title>
+      <link>http://sheenamnarula1993.github.io/post/kubernetes-part-1/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0530</pubDate>
+      
+      <guid>http://sheenamnarula1993.github.io/post/kubernetes-part-1/</guid>
+      <description>Kubernetes Vocab : Node : It is an instance of computer which is also known as worker nodes.
+Pods : It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&amp;rsquo;s image. Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.
+When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes.</description>
+    </item>
     
     <item>
       <title>Import Vs Require</title>
@@ -18,21 +48,10 @@
       
       <guid>http://sheenamnarula1993.github.io/post/import-require/</guid>
       <description>Syntax of import/export : file : exportVar.js
-export const m = 1 ;  file : importVar.js
-import {m} from exportVar.js  Syntax of require : file : exportVar.js
-const m = 1; module.exports = m ;  file: importVar.js
-const m = require(&#39;./exportVar.js&#39;)  Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&amp;rsquo;t wait for first module to be loaded completely.</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes Part-1</title>
-      <link>http://sheenamnarula1993.github.io/post/kubernetes-part-1/</link>
-      <pubDate>Mon, 29 Jul 2019 00:00:00 +0530</pubDate>
-      
-      <guid>http://sheenamnarula1993.github.io/post/kubernetes-part-1/</guid>
-      <description>Kubernetes Vocab : Node : It is an instance of computer which is also known as worker nodes.
-Pods : It is a smallest unit of kubernetes that we can deploy on kubernets cluster.It contain container&amp;rsquo;s image. Bascially a pod is a collection of more than one conatiners which are supposed run on one host logically.
-When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes.</description>
+export const m = 1 ; file : importVar.js
+import {m} from exportVar.js Syntax of require : file : exportVar.js
+const m = 1; module.exports = m ; file: importVar.js
+const m = require(&#39;./exportVar.js&#39;) Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&amp;rsquo;t wait for first module to be loaded completely.</description>
     </item>
     
     <item>
@@ -53,7 +72,7 @@ Virtualization : A virtual machine is a copy of a complete server basically it h
       <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-2/</guid>
       <description>I am assuming that an amazon account is already set up to use the Amazon Elastic Container Service(ECS).
 Steps to deploy two containers(app + database) -
- Dockerise app Create Registry(ECR) Upload app image to ECR Create task definition with two containers Create a cluster Create a service and run it.  Practical Explanation of steps : 1. Dockerise app for this you can check this practice project : https://github.</description>
+ Dockerise app Create Registry(ECR) Upload app image to ECR Create task definition with two containers Create a cluster Create a service and run it.  Practical Explanation of steps : 1. Dockerise app for this you can check this practice project : https://github.com/sheenamnarula/node-graphql-docker-aws</description>
     </item>
     
     <item>
@@ -64,7 +83,7 @@ Steps to deploy two containers(app + database) -
       <guid>http://sheenamnarula1993.github.io/post/express-docker-aws-1/</guid>
       <description>First of all, make a project in node-express-mongo and dockerise it. Here I am giving a github link of a basic node-express app made along with graphql as this has become my favourite language because of its advantage of providing independence to front-end developers.
 Github link for dockerised app : https://github.com/sheenamnarula/node-graphql-docker-aws Docker File Lets understand first, what is the meaning of lines written in the docker file.
-From node:8.9.0  This line specifies the base image.</description>
+From node:8.9.0 This line specifies the base image.</description>
     </item>
     
     <item>
@@ -106,7 +125,7 @@ When you write small programs that consist of only one, or just two or three sou
       
       <guid>http://sheenamnarula1993.github.io/post/cold-war/</guid>
       <description>The cold war was a state of geopolitical tension after second world war between Eastern Bloc(The Soviet Union and its satellite states) and Western Bloc(the United States and its NATO Alies)
-Cold war era - 1947 to 1989&amp;frasl;1991. But actually it doesnot have any fix date.
+Cold war era - 1947 to 1989/1991. But actually it doesnot have any fix date.
 Why is it called cold war : No direct combat or fight between USSR + Allies and US + allies but there were proxy wars like Korean War,Vietnam War and Afghanistan war.</description>
     </item>
     

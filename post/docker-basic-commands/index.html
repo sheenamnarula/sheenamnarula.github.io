@@ -100,7 +100,7 @@ Command to run a container in backround :  $ docker container run -d -p 80:80 {i
     
     
     
-    <link rel="stylesheet" href="/css/academic.8579d44307000b8b3469eec9b7f7fc17.css">
+    <link rel="stylesheet" href="/css/academic.d343353a722af4a7fe37c7930aa2f406.css">
   
 
   
@@ -396,51 +396,31 @@ Command to run a container in backround :  $ docker container run -d -p 80:80 {i
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
-
-<h3 id="show-commands-and-management-commands">Show commands and Management commands</h3>
-
+      <h3 id="show-commands-and-management-commands">Show commands and Management commands</h3>
 <pre><code>  $ docker
 </code></pre>
-
-<h3 id="docker-version">Docker version :</h3>
-
+<h3 id="docker-version-">Docker version :</h3>
 <pre><code>  $ docker --version
 </code></pre>
-
 <h3 id="show-info-like-number-of-containers">Show info like number of containers</h3>
-
 <pre><code>  $ docker info
 </code></pre>
-
 <h2 id="commands-required-for-containers">Commands required for Containers</h2>
-
-<h4 id="command-to-run-a-container-in-foreground">Command to run a container in foreground :</h4>
-
+<h4 id="command-to-run-a-container-in-foreground-">Command to run a container in foreground :</h4>
 <pre><code>  $ docker container run -it -p 80:80 {image name}
 </code></pre>
-
 <p>Example : docker container run -it -p 80:80 nginx</p>
-
-<h4 id="command-to-run-a-container-in-backround">Command to run a container in backround :</h4>
-
+<h4 id="command-to-run-a-container-in-backround-">Command to run a container in backround :</h4>
 <pre><code>  $ docker container run -d -p 80:80 {image name}
 </code></pre>
-
 <h4 id="short-hand-command">Short hand command</h4>
-
 <pre><code>  $ docker container run -d -p 80:80 {image name}
 </code></pre>
-
 <h4 id="naming-custom-names-to-container">Naming custom names to container</h4>
-
 <pre><code>  $ docker container run -p 80:80 --name {container name} {image name}
 </code></pre>
-
 <p>Example : docker container run -d -p 80:80 &ndash;name nginx-server nginx</p>
-
-<h3 id="purpose-of-run-in-command">Purpose of &ldquo;run&rdquo; in command :</h3>
-
+<h3 id="purpose-of-run-in-command-">Purpose of &ldquo;run&rdquo; in command :</h3>
 <ul>
 <li>It actually looks for image in local cache.</li>
 <li>If image is not found, it looks into Docker Hub where default image repo may exist(its like github for docker images).</li>
@@ -449,152 +429,92 @@ Command to run a container in backround :  $ docker container run -d -p 80:80 {i
 <li>As we know syntax for port specification is HOST:CONTAINER port. So here we can access on port 80.</li>
 <li>We can also access it on any port by changing host port. For e.g. , if we want access on port 3000, then we need to write here 3000:80.</li>
 </ul>
-
 <h4 id="commands-for-listing-containers">Commands for listing containers</h4>
-
 <p>These two commands gives us running containers.</p>
-
 <pre><code>    $ docker ps
     $ docker container ls
 </code></pre>
-
 <p>This command will give us all containers(including those containers as well which are not running).</p>
-
 <pre><code>    $ docker container ls -a
 </code></pre>
-
 <h4 id="commands-to-stop-container">Commands to stop container</h4>
-
 <h5 id="stop-a-specific-container">Stop a specific container</h5>
-
 <pre><code>  $ docker container stop [ID]
 </code></pre>
-
 <h5 id="stop-all-containers">Stop all containers</h5>
-
 <pre><code>  $ docker stop $(docker ps -aq)
 </code></pre>
-
 <h5 id="remove-a-specific-container">Remove a specific container</h5>
-
 <pre><code>  $ docker container rm -f [ID]
 </code></pre>
-
 <h5 id="remove-multiple-containers">Remove multiple containers</h5>
-
 <pre><code>  $ docker container rm [ID] [ID] [ID]
 </code></pre>
-
 <h5 id="remove-all-containers">Remove all containers</h5>
-
 <pre><code>  $ docker rm $(docker ps -aq)
 </code></pre>
-
 <h4 id="get-logs-of-container">Get logs of container</h4>
-
 <pre><code>  $ docker container logs [NAME]
 </code></pre>
-
 <h4 id="list-processes-running-in-container">List processes running in container</h4>
-
 <pre><code>  $ docker container top [NAME]
 </code></pre>
-
 <h4 id="view-container-info">View Container Info</h4>
-
 <pre><code>  $ docker container inspect [NAME]
 </code></pre>
-
 <h4 id="performance-stats">Performance stats</h4>
-
 <pre><code>  $ docker container stats [NAME]
 </code></pre>
-
 <h2 id="commands-required-for-images">Commands required for Images</h2>
-
 <h5 id="list-images">List images</h5>
-
 <pre><code>  $ docker images
 </code></pre>
-
 <h5 id="build-image">Build Image</h5>
-
 <pre><code>  $ docker image build -t [REPONAME] .
 </code></pre>
-
 <h5 id="pull-image">Pull Image</h5>
-
 <pre><code>  $ docker pull [IMAGE]
 </code></pre>
-
 <h5 id="remove-a-specific-image">Remove a specific image</h5>
-
 <pre><code>  $ docker image rm [IMAGE]
 </code></pre>
-
 <h5 id="remove-all-images">Remove all images</h5>
-
 <pre><code>  $ docker rmi $(docker images -a -q)
 </code></pre>
-
 <h4 id="image-tagging-and-pushing-to-docker-hub">Image tagging and pushing to docker hub</h4>
-
 <p>Tags are labels that point to an Image</p>
-
 <h5 id="tagging-an-existing-image">Tagging an Existing Image</h5>
-
 <pre><code>  $ docker image tag {old name} {new tag name}
 </code></pre>
-
 <h5 id="upload-to-docker-hub">Upload to docker hub</h5>
-
 <pre><code>  $ docker image push {imageTag}
 </code></pre>
-
-<h5 id="note-if-pushing-operation-is-denied-do-login-in-docker-using">Note : If pushing operation is denied, do login in docker using</h5>
-
+<h5 id="note--if-pushing-operation-is-denied-do-login-in-docker-using">Note : If pushing operation is denied, do login in docker using</h5>
 <pre><code>    $ docker login
 </code></pre>
-
 <h2 id="docker-networks">Docker Networks</h2>
-
 <h4 id="get-port">Get Port</h4>
-
 <pre><code>  $ docker container port [NAME]
 </code></pre>
-
 <h4 id="list-networks">List Networks</h4>
-
 <pre><code>  $ docker network ls
 </code></pre>
-
 <h4 id="inspect-network">Inspect Network</h4>
-
 <pre><code> $ docker network inspect [NETWORK_NAME]
 </code></pre>
-
 <h4 id="create-network">Create network</h4>
-
 <pre><code>$ docker network create [NETWORK_NAME]
 </code></pre>
-
 <h4 id="create-container-on-network">Create container on network</h4>
-
 <pre><code>$ docker container run -d --name [NAME] --network [NETWORK_NAME] [IMAGE_NAME]
 </code></pre>
-
 <h4 id="connect-existing-container-to-network">Connect existing container to network</h4>
-
 <pre><code>$ docker network connect [NETWORK_NAME] [CONTAINER_NAME]
 </code></pre>
-
 <h4 id="disconnect-container-from-network">Disconnect container from network</h4>
-
 <pre><code>$ docker network disconnect [NETWORK_NAME] [CONTAINER_NAME]
 </code></pre>
-
 <h4 id="detach-network-from-container">Detach network from container</h4>
-
 <pre><code>$ docker network disconnect
 </code></pre>
 
@@ -690,10 +610,8 @@ Command to run a container in backround :  $ docker container run -d -p 80:80 {i
   <p class="powered-by">
     
 
-    Powered by the
-    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
+    
+      
     
     <span class="float-right" aria-hidden="true">
       <a href="#" id="back_to_top">
@@ -827,7 +745,7 @@ Command to run a container in backround :  $ docker container run -d -p 80:80 {i
     
     
     
-    <script src="/js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
 
   </body>
 </html>
