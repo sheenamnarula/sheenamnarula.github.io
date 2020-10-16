@@ -1,7 +1,7 @@
 +++
-title = "Kubernetes Part-1"
+title = "Kubernetes Architecture"
 featured = true
-publishDate = 2019-07-29
+publishDate = 2020-10-15
 subtitle = "This article is about Kubernetes architecture."
 
 
