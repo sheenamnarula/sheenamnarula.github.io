@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Personal-Brand-Wokflow
+on:
+  push:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build-and-deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_SECRET }}
+        run: |
+          hugo
+          git remote set-url origin https://github.com/sheenamnarula/sheenamnarula.github.io.git
+          git config --global user.name "sheenamnarula"    
+          git add sheenamnarula.github.io/
+          git commit -m"changes published to github page"
+          git push origin master
