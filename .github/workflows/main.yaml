@@ -21,6 +21,7 @@ jobs:
         run: |
           hugo
           git remote set-url origin https://${{ secrets.USERNAME }}:${{ secrets.MY_SECRET }}@github.com/sheenamnarula/sheenamnarula.github.io
+          git remote -v
           git config --global user.name "sheenamnarula"
           git config --global user.email sheenamnarula1993@gmail.com
           git checkout -b test-branch    
