@@ -20,7 +20,7 @@ jobs:
       - name: Build-and-deploy
         run: |
           hugo
-          git remote set-url origin https://sheenamnarula:sh%23%23naM%401993@github.com/sheenamnarula/sheenamnarula.github.io
+          git remote set-url origin https://sheenamnarula:sharewithall1@github.com/sheenamnarula/sheenamnarula.github.io
           git remote -v
           git config --global user.name "sheenamnarula"
           git config --global user.email sheenamnarula1993@gmail.com
