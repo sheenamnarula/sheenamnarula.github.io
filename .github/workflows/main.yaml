@@ -26,5 +26,5 @@ jobs:
           git checkout -b test-branch    
           git add sheenamnarula1993.github.io/
           git commit -m"changes published to github page"
-          git push origin master
+          git push origin test-branch
 
