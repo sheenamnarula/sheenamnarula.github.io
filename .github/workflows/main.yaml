@@ -23,7 +23,8 @@ jobs:
         run: |
           hugo
           git remote set-url origin https://github.com/sheenamnarula/sheenamnarula.github.io.git
-          git config --global user.name "sheenamnarula"    
+          git config --global user.name "sheenamnarula"
+          git config --global user.email sheenamnarula1993@gmail.com    
           git add sheenamnarula1993.github.io/
           git commit -m"changes published to github page"
           git push origin master
