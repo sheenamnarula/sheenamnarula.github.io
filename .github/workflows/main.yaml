@@ -19,7 +19,7 @@ jobs:
           
       - name: Build-and-deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_PAGE }}
         run: |
           hugo
           git remote set-url origin https://github.com/sheenamnarula/sheenamnarula.github.io.git
