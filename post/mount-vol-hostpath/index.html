@@ -27,11 +27,12 @@
   
     
   
-  <meta name="description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.">
+  <meta name="description" content="There are times when we want to mount a local file or directory(i.e. a file or directory that exists on host machine / local machine) to pod. To achieve this we use &ldquo;hostpath&rdquo; volume mount technique in kubernetes.
+Steps to mount file using hostpath :
+ Mount file/directory from host to pod. Mount file/directory from pod to container(where we actual wanna use this.)  Let us take an example, where we want to mount a file named credentails.">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="alternate" hreflang="en-us" href="http://sheenamnarula1993.github.io/post/mount-vol-hostpath/">
 
   
 
@@ -113,7 +114,7 @@ When you write small programs that consist of only one, or just two or three sou
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/scala/">
+  <link rel="canonical" href="http://sheenamnarula1993.github.io/post/mount-vol-hostpath/">
 
   
   
@@ -125,22 +126,23 @@ When you write small programs that consist of only one, or just two or three sou
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Sheenam Narula">
-  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/scala/">
-  <meta property="og:title" content="Scala Part-1 | Sheenam Narula">
-  <meta property="og:description" content="SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.
-When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
+  <meta property="og:url" content="http://sheenamnarula1993.github.io/post/mount-vol-hostpath/">
+  <meta property="og:title" content="Kubernetes Mounting file or directory | Sheenam Narula">
+  <meta property="og:description" content="There are times when we want to mount a local file or directory(i.e. a file or directory that exists on host machine / local machine) to pod. To achieve this we use &ldquo;hostpath&rdquo; volume mount technique in kubernetes.
+Steps to mount file using hostpath :
+ Mount file/directory from host to pod. Mount file/directory from pod to container(where we actual wanna use this.)  Let us take an example, where we want to mount a file named credentails."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-19T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2020-10-16T00:00:00&#43;05:30">
   
-  <meta property="article:modified_time" content="2019-06-19T00:00:00&#43;05:30">
-  
-
+  <meta property="article:modified_time" content="2020-10-16T00:00:00&#43;05:30">
   
 
   
 
-  <title>Scala Part-1 | Sheenam Narula</title>
+  
+
+  <title>Kubernetes Mounting file or directory | Sheenam Narula</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -321,10 +323,10 @@ When you write small programs that consist of only one, or just two or three sou
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Scala Part-1</h1>
+  <h1 itemprop="name">Kubernetes Mounting file or directory</h1>
 
   
-  <p class="page-subtitle">What is SBT?</p>
+  <p class="page-subtitle">Mount a local file or directory using HOSTPATH</p>
   
 
   
@@ -332,8 +334,8 @@ When you write small programs that consist of only one, or just two or three sou
 
 
 
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-06-19 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2020-10-16 00:00:00 &#43;0530 IST" itemprop="datePublished">
+<meta content="2020-10-16 00:00:00 &#43;0530 IST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -346,7 +348,7 @@ When you write small programs that consist of only one, or just two or three sou
     
       
     
-    <time>Jun 19, 2019</time>
+    <time>Oct 16, 2020</time>
   </span>
   
 
@@ -396,16 +398,26 @@ When you write small programs that consist of only one, or just two or three sou
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>SBT is a popular tool for compiling, running, and testing Scala projects of any size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies or more than one code file.</p>
-<p>When you write small programs that consist of only one, or just two or three source files, then it&rsquo;s easy enough to compile those source files by typing scalac MyProgram.scala in the command line.</p>
-<p>But when you start working on a bigger project with dozens or maybe even hundreds of source files, then it becomes too tedious to compile all those source files manually. You will then want to use a build tool to manage compiling all those source files.</p>
-<p>sbt is such a tool. There are other tools too, some other well-known build tools that come from the Java world are Ant and Maven.</p>
-<p>How it works is that you create a project file that describes what your project looks like; when you use sbt, this file will be called build.sbt. That file lists all the source files your project consists of, along with other information about your project. Sbt will read the file and then it knows what to do to compile the complete project.</p>
-<p>Besides managing your project, some build tools, including sbt, can automatically manage dependencies for you. This means that if you need to use some libraries written by others, sbt can automatically download the right versions of those libraries and include them in your project for you.</p>
-<p>Let’s look at how to use published libraries to add extra functionality to our apps.</p>
-<p>Open up build.sbt and add the following line:</p>
-<pre><code>libraryDependencies += &quot;org.scala-lang.modules&quot; %% &quot;scala-parser-combinators&quot; % &quot;1.1.0&quot;
-</code></pre><p>Here, libraryDependencies is a set of dependencies, and by using +=, we’re adding the scala-parser-combinators dependency to the set of dependencies that sbt will go and fetch when it starts up. Now, in any Scala file, you can import classes, objects, etc, from scala-parser-combinators with a regular import.</p>
+      <p>There are times when we want to mount a local file or directory(i.e. a file or directory that exists on host machine / local machine) to pod.
+To achieve this we use &ldquo;hostpath&rdquo; volume mount technique in kubernetes.</p>
+<p>Steps to mount file using hostpath :</p>
+<ol>
+<li>Mount file/directory from host to pod.</li>
+<li>Mount file/directory from pod to container(where we actual wanna use this.)</li>
+</ol>
+<p>Let us take an example, where we want to mount a file named credentails.json to container at path &ldquo;usr/share/myApp&rdquo;.</p>
+<h3 id="step-1-">Step 1 :</h3>
+<pre><code>volumes:
+	- name: myfile
+		hostPath:
+			path: home/sheenam/credentials.json
+			type: FileOrCreate
+</code></pre><p>Above code refers to the step where we have to mount file to pod. So in pod spec, in volumes section, we are assigning a name which can be further used in container spec while mounting. In hostPath, we are giving the path  where credentials.json exists on local machine and type as file as we are mounting file.</p>
+<h3 id="step-2-">Step 2 :</h3>
+<pre><code>volumeMounts:
+	- mountPath: usr/share/kibana/gcp-key.json
+		name: myfile
+</code></pre><p>Above code refers to the step where we have to mount file from pod to container. So in container spec, in volumeMounts section, we are giving mountPath(path in container where we want to keep that file) and name refers to the name mentioned in pod spec (to point to the mounted file in pod from host in step 1).</p>
 
     </div>
 
@@ -460,8 +472,6 @@ When you write small programs that consist of only one, or just two or three sou
       
       
       
-        
-      
       
       
       
@@ -469,8 +479,8 @@ When you write small programs that consist of only one, or just two or three sou
         
       
       <li>
-        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i>
+        <a itemprop="sameAs" href="/files/cv.pdf" >
+          <i class="ai ai-cv"></i>
         </a>
       </li>
       
