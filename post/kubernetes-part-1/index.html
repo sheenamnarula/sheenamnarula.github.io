@@ -133,9 +133,9 @@ Pods : It is a smallest unit of kubernetes that we can deploy on kubernets clust
 When a pod is created, an ip address is assigned to it.When a worker node dies, replica of that pod is created but with different ip address and different volumes."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2020-10-15T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2020-10-15T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-10-15T00:00:00&#43;05:30">
+  <meta property="article:modified_time" content="2020-10-15T00:00:00&#43;00:00">
   
 
   
@@ -334,8 +334,8 @@ When a pod is created, an ip address is assigned to it.When a worker node dies, 
 
 
 
-<meta content="2020-10-15 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2020-10-15 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2020-10-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2020-10-15 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -457,7 +457,7 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
 <p>The Kubelet ships with built-in support for cAdvisor, which collects, aggregates, processes and exports metrics (such as CPU, memory, file and network usage) about running containers on a given node. cAdvisor includes a built-in web interface available on port 4194 (just open your browser and navigate to http://<!-- raw HTML omitted -->:4194/).</p>
 <p>You can view the cAdvisor /metrics endpoint by issuing a GET request to http://<!-- raw HTML omitted -->:4194/metrics.</p>
 <h4 id="service-proxy-">Service Proxy :</h4>
-<p>Service Proxy runs on each node and is responsible for watching the api server for pods and services definitions' changes to keep the entire network&rsquo;s configuration up to date,ensuring that one pod can talk to another pod,one node can talk to another node, one container can talk to another container.In addition to this, it maintains all ip route tables so that it can redirect user request to a correct backend resource. That is why, when we hit the Node port, even if app is not available on that node but it redirects the request to the correct backend resource for execution.</p>
+<p>Service Proxy runs on each node and is responsible for watching the api server for pods and services definitions&rsquo; changes to keep the entire network&rsquo;s configuration up to date,ensuring that one pod can talk to another pod,one node can talk to another node, one container can talk to another container.In addition to this, it maintains all ip route tables so that it can redirect user request to a correct backend resource. That is why, when we hit the Node port, even if app is not available on that node but it redirects the request to the correct backend resource for execution.</p>
 
     </div>
 
@@ -512,6 +512,8 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
       
       
       
+        
+      
       
       
       
@@ -519,8 +521,8 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
         
       
       <li>
-        <a itemprop="sameAs" href="/files/cv.pdf" >
-          <i class="ai ai-cv"></i>
+        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
         </a>
       </li>
       
@@ -684,7 +686,7 @@ Once a pod&rsquo;s binding to node is done, regular task of Kubelet is invoked w
     
     
     
-    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
+    <script src="/js/academic.min.8a88d8e8fb7e546dbdc78aa60f7947c7.js"></script>
 
   </body>
 </html>

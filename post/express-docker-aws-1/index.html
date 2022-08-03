@@ -133,9 +133,9 @@ Github link for dockerised app : https://github.com/sheenamnarula/node-graphql-d
 From node:8.9.0 This line specifies the base image."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-28T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2019-06-28T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-06-28T00:00:00&#43;05:30">
+  <meta property="article:modified_time" content="2019-06-28T00:00:00&#43;00:00">
   
 
   
@@ -334,8 +334,8 @@ From node:8.9.0 This line specifies the base image."><meta property="og:image" c
 
 
 
-<meta content="2019-06-28 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-06-28 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2019-06-28 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-06-28 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -402,20 +402,20 @@ From node:8.9.0 This line specifies the base image."><meta property="og:image" c
 <h4 id="github-link-for-dockerised-app--httpsgithubcomsheenamnarulanode-graphql-docker-aws">Github link for dockerised app : <a href="https://github.com/sheenamnarula/node-graphql-docker-aws">https://github.com/sheenamnarula/node-graphql-docker-aws</a></h4>
 <h1 id="docker-file">Docker File</h1>
 <p>Lets understand first, what is the meaning of lines written in the docker file.</p>
-<pre><code>From node:8.9.0
+<pre tabindex="0"><code>From node:8.9.0
 </code></pre><p>This line specifies the base image.Every docker file starts with a FROM instruction. As we are writing here for node app, so we need to set a node environmnent for the app. Here node:<!-- raw HTML omitted --> is the base image along with the required version for our app ie. 8.9.0</p>
-<pre><code>WORKDIR /app
+<pre tabindex="0"><code>WORKDIR /app
 </code></pre><p>This line refers to a directory in which we are going to keep our application files.Basically WORKDIR sets a directory where another commands like COPY, RUN, CMD, ADD can be run. In short, it is providing an entry point of app directory.</p>
-<pre><code>COPY package\*.json ./
+<pre tabindex="0"><code>COPY package\*.json ./
 </code></pre><p>To start a project or run a project, we need to install node modules and as we know in a node app, package.json is a file where dependencies of project is documented. So we are copying package.json in working directory so that further instructions can install node modules using this file. Here package* refers to package.json and package.lock.json files.</p>
-<pre><code>RUN npm install
+<pre tabindex="0"><code>RUN npm install
 RUN npm install nodemon babel-cli babel-preset-env
 </code></pre><p>These both lines contain RUN command. After copying package.json in work directory that is suppose to be entry point of our source files,using RUN command we are installing node modules and required dependencies for our project. Basically RUN command is used for the command that we run in a terminal and then it commits a new image which is further used by next instructions of docker file</p>
-<pre><code>EXPOSE 3007
+<pre tabindex="0"><code>EXPOSE 3007
 </code></pre><p>This line is very important to understand as it defines which port of container is exposed.When we give any port with this command, that means that port of container is exposed.Means if we want to access app, we have to write the hostname simply i.e we need to write port 80 on browser. But if we write publish port in docker run command with expose port that means the app will be accesed through published port. In short, EXPOSE is used to open port for network but publish is used to map the opened port to public accessible port.</p>
-<pre><code>COPY . /app
+<pre tabindex="0"><code>COPY . /app
 </code></pre><p>Here we are copying the all content of app to our container working directory so that app can be run.</p>
-<pre><code>CMD npm run start
+<pre tabindex="0"><code>CMD npm run start
 </code></pre><p>This line refers to executing the command that is required to start the project.</p>
 <h3 id="difference-between-run-and-cmd--">Difference between RUN and CMD -</h3>
 <p>Here is an important difference between RUN and CMD :</p>
@@ -429,40 +429,40 @@ Now this is all about one container which will contain app. But here database re
 <p>To manage more than one container we will go for a tool named Compose. Compose is a tool that is used to define and run multi-container docker applications.In this, a YAML file is used to configure multiple containers of application services.Then with a single command, we can create and start all the services using yaml configuration file.</p>
 <p>Here is the code for docker compose file and explanation of each line of code :</p>
 <h1 id="explanation-of-docker-compose-file-">Explanation of Docker Compose file :</h1>
-<pre><code>version: &quot;3&quot; -
+<pre tabindex="0"><code>version: &#34;3&#34; -
 </code></pre><p>This line refers to the docker compose file format version.</p>
-<pre><code>services:
+<pre tabindex="0"><code>services:
 </code></pre><p>This line refers to the start of container configurations.A service definition contains configuration that is applied to each container started for that service.</p>
-<pre><code>app:
+<pre tabindex="0"><code>app:
 </code></pre><p>This line refers to the name of your service.</p>
-<pre><code>container_name: docker-node-mongo
+<pre tabindex="0"><code>container_name: docker-node-mongo
 </code></pre><p>By default, a random name is generated. To generate a meaningful name, we use container_name parameter in config.</p>
-<pre><code>restart: always
+<pre tabindex="0"><code>restart: always
 </code></pre><p>By default behaviour of container is that it never restarts. By setting restart to always, we are making container to opt restarting behaviour.</p>
-<pre><code>build: .
+<pre tabindex="0"><code>build: .
 </code></pre><p>This option is used when we have to make an image from a docker file. Relative path is given in this option so that docker can look for Dockerfile according to given path to build image.\</p>
-<pre><code>ports:
-  - &quot;80:3007&quot;
+<pre tabindex="0"><code>ports:
+  - &#34;80:3007&#34;
 </code></pre><p>This option is used to mention the exposed port of container. HOST:CONTAINER is short syntax to metion ports.</p>
 <p>The long form syntax allows the configuration of additional fields that can’t be expressed in the short form.</p>
 <p>target: the port inside the container
 published: the publicly exposed port
 protocol: the port protocol (tcp or udp)
 mode: host for publishing a host port on each node, or ingress for a swarm mode port to be load balanced.</p>
-<pre><code>ports:
+<pre tabindex="0"><code>ports:
   -target: 80
   published: 8080
   protocol: tcp
   mode: host
-</code></pre><pre><code>depends_on:
+</code></pre><pre tabindex="0"><code>depends_on:
   - mongo
 </code></pre><p>This line express the dependencies of one container to other. To start a container,the containers on which it is dependent, will be started first</p>
-<pre><code>mongo:
+<pre tabindex="0"><code>mongo:
   container_name: mongo
   image: mongo
 </code></pre><p>This will check the mongo image if it is available locally and in case of unavailability, image will be downloaded from docker hub(github for docker images).</p>
-<pre><code>ports:
- - &quot;27017:27017&quot;
+<pre tabindex="0"><code>ports:
+ - &#34;27017:27017&#34;
 </code></pre><p>Here is on more command like depends_on i.e. links. But link is deprecated now. depends_on gives us start order but links just to link one container to another.But now, if containers are placed in same network, they can connect with each other by using their name.</p>
 <p>Now by running a single command, &ldquo;docker-compose up&rdquo;, we can see two containers running one is our app container and other is mongo container.</p>
 <p>Note: In project here is one commented line , <code>mongodb://mongo:27017/expGraphqlDemo</code>. In this mongo is container name and 27017 is container&rsquo;s published port.But for deployment purpose, we are making it configurable and will pass as environment variable while deployment.</p>
@@ -520,6 +520,8 @@ mode: host for publishing a host port on each node, or ingress for a swarm mode 
       
       
       
+        
+      
       
       
       
@@ -527,8 +529,8 @@ mode: host for publishing a host port on each node, or ingress for a swarm mode 
         
       
       <li>
-        <a itemprop="sameAs" href="/files/cv.pdf" >
-          <i class="ai ai-cv"></i>
+        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
         </a>
       </li>
       
@@ -692,7 +694,7 @@ mode: host for publishing a host port on each node, or ingress for a swarm mode 
     
     
     
-    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
+    <script src="/js/academic.min.8a88d8e8fb7e546dbdc78aa60f7947c7.js"></script>
 
   </body>
 </html>

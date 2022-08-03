@@ -137,9 +137,9 @@ const m = 1; module.exports = m ; file: importVar.js
 const m = require(&#39;./exportVar.js&#39;) Loading Strategy : Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules. But in case of require(), synchronous loading of modules takes place. It means, if a file needs to load 5 modules, in case of ES6 structure, second module won&rsquo;t wait for first module to be loaded completely."><meta property="og:image" content="http://sheenamnarula1993.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-31T00:00:00&#43;05:30">
+  <meta property="article:published_time" content="2019-07-31T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-07-31T00:00:00&#43;05:30">
+  <meta property="article:modified_time" content="2019-07-31T00:00:00&#43;00:00">
   
 
   
@@ -338,8 +338,8 @@ const m = require(&#39;./exportVar.js&#39;) Loading Strategy : Mainly import/exp
 
 
 
-<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="datePublished">
-<meta content="2019-07-31 00:00:00 &#43;0530 IST" itemprop="dateModified">
+<meta content="2019-07-31 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-07-31 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -404,15 +404,15 @@ const m = require(&#39;./exportVar.js&#39;) Loading Strategy : Mainly import/exp
     <div class="article-style" itemprop="articleBody">
       <h4 id="syntax-of-importexport-">Syntax of import/export :</h4>
 <p>file : exportVar.js</p>
-<pre><code>export const m = 1 ;
+<pre tabindex="0"><code>export const m = 1 ;
 </code></pre><p>file : importVar.js</p>
-<pre><code>import {m} from exportVar.js
+<pre tabindex="0"><code>import {m} from exportVar.js
 </code></pre><h5 id="syntax-of-require-">Syntax of require :</h5>
 <p>file : exportVar.js</p>
-<pre><code>const m = 1;
+<pre tabindex="0"><code>const m = 1;
 module.exports = m ;
 </code></pre><p>file: importVar.js</p>
-<pre><code>const m = require('./exportVar.js')
+<pre tabindex="0"><code>const m = require(&#39;./exportVar.js&#39;)
 </code></pre><h3 id="loading-strategy-">Loading Strategy :</h3>
 <p>Mainly import/export i.e. ES6 structure, involves asynchronous loading of modules.
 But in case of require(), synchronous loading of modules takes place.
@@ -426,18 +426,18 @@ It means, if a file needs to load 5 modules, in case of ES6 structure, second mo
 In loading step, it is determined that what kind of thing is pointed by absolute path that is obtained on completion of resolution step.If it is Node.js native module, then dynamic linking of module is decided. On the other hand, if it is JSON file, the content is loaded in memory for further use.
 Here is the trick, in wrapper step, before evaluation, the loaded Javasacript is wrapped in a function. For e.g.</p>
 <p>In file, example.js</p>
-<pre><code>const m = 1;
+<pre tabindex="0"><code>const m = 1;
 module.exports.m = m;
 </code></pre><p>code is actually wrapped and passed to evaluation in below function format :</p>
-<pre><code>function (exports, require, module, **filename, **dirname) {
+<pre tabindex="0"><code>function (exports, require, module, **filename, **dirname) {
 const m = 1;
 module.exports.m = m;
 }
 </code></pre><p>Here the exports is a parameter for wrapper function and it is a normal javascript object. So when the wrapper function is evaluated, it returns the exports object which is then used as a result of require(). The main point to note here is that, there is no way to determine as what kind of module is being exported by Common JS until the evaluation of wrapper.</p>
 <p>On the other hand, if we use import/export i.e. ES6 feature, the equivalent code of above example is :</p>
 <p>In file, example.js</p>
-<pre><code>export const m = 1;
-import {m} from './example.js'
+<pre tabindex="0"><code>export const m = 1;
+import {m} from &#39;./example.js&#39;
 </code></pre><p>In this case, the shape of m is actually determined at the parsing step i.e before evaluation step. Actually, while parsing, and before evaluation, a Module Record is created, where a static listing of modules that have been exported in code are listed and verified. That means, it is verified first whether the exported m exists or not and link between import file and exported module i.e. m is eastablished. Only after creation of this module record, code is actually evaluated.
 Here the key point is, before even evaluation of code, the shape of module is known or we can say that, import/export is resolved before evaluation of code.</p>
 <h2 id="challenge-for-nodejs-">Challenge for Node.js :</h2>
@@ -453,15 +453,15 @@ Right now, Node is distinguishing between the modules like this :</p>
 <p>Now *.mjs will specify that the module is ESM and it should be loaded with the right mechanism.
 The key point here is by knowing the extensions of file, loading mechanism will be selected. For Common JS module, evaluation of module will be done first so that verification of existence can be done.</p>
 <p>E.g. There are two files common.js and esm.mjs</p>
-<pre><code>import c from './common.js'
+<pre tabindex="0"><code>import c from &#39;./common.js&#39;
 </code></pre><p>will be treated as Common js module</p>
-<pre><code>import e from './esm.mjs'
+<pre tabindex="0"><code>import e from &#39;./esm.mjs&#39;
 </code></pre><p>will be treated as ESM module</p>
 <h2 id="what-to-do-if-i-want-to-use-es6-importexport-feature-in-project">What to do if i want to use ES6 import/export feature in project?</h2>
 <h4 id="answer-is-babel">Answer is Babel</h4>
 <p>If we want to use import/export feature of ES6, we need to use babel which transpiles code in Common JS. Here is a point which needs to be understood that Babel only converts the syntax to Common JS syntax so that it can be resolved by Node js, but implementation is according to ESM only.</p>
 <p>Example: If we see named imports like</p>
-<pre><code>import {a,b} from 'ab';
+<pre tabindex="0"><code>import {a,b} from &#39;ab&#39;;
 </code></pre><p>This syntax will work only if ab is an ESM. But if it is Common JS module, it is not possible to use this syntax as shape of code can&rsquo;t be determined until evaluation is done in this case.</p>
 <p>But here BABEL does a perfect job for us by converting ES6 syntax to Common JS syntax and we get the required implementation.</p>
 <h2 id="significance-of-using-es6-structure-">Significance of using ES6 structure :</h2>
@@ -525,6 +525,8 @@ In node.js terms, we can say that loading scripts, resolution of import and expo
       
       
       
+        
+      
       
       
       
@@ -532,8 +534,8 @@ In node.js terms, we can say that loading scripts, resolution of import and expo
         
       
       <li>
-        <a itemprop="sameAs" href="/files/cv.pdf" >
-          <i class="ai ai-cv"></i>
+        <a itemprop="sameAs" href="https://github.com/sheenamnarula" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
         </a>
       </li>
       
@@ -697,7 +699,7 @@ In node.js terms, we can say that loading scripts, resolution of import and expo
     
     
     
-    <script src="/js/academic.min.f579f291d0f0c7da58aa872f9aba5215.js"></script>
+    <script src="/js/academic.min.8a88d8e8fb7e546dbdc78aa60f7947c7.js"></script>
 
   </body>
 </html>
