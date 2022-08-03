@@ -18,43 +18,41 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab fa-node"
   name = "Node js"
-  description = "80%"
 
   [[feature]]
   icon = "graphql"
   icon_pack = "sheecon"
   name = "Graphql"
-  description = "78%"
+
+[[feature]]
+  icon = "NestJs"
+  icon_pack = "fab fa-js"
+  name = "Nest Js"
 
   [[feature]]
   icon = "express"
   icon_pack = "fab fa-js"
   name = "Express Js"
-  description = "75%"
 
   [[feature]]
   icon = "camera-retro"
   icon_pack = "fab fa-js"
   name = "Hapi Js"
-  description = "75%"
 
   [[feature]]
   icon = "meteor"
   icon_pack = "sheecon"
   name = "Meteor"
-  description = "70%"
 
   [[feature]]
   icon = "mongoDb"
   icon_pack = "sheecon"
   name = "Mongodb"
-  description = "75%"
 
   [[feature]]
   icon = "loopback"
   icon_pack = "sheecon"
   name = "loopback"
-  description = "72%"
 
   [[feature]]
   icon = "docker"
@@ -66,7 +64,6 @@ subtitle = ""
   icon = "kubernetes"
   icon_pack = "sheecon"
   name = "Kubernetes"
-  description = "70%"
 
   [[feature]]
   icon = "iot"
@@ -78,11 +75,9 @@ subtitle = ""
   icon = "react"
   icon_pack = "sheecon"
   name = "React with Redux"
-  description = "65%"
 
   [[feature]]
   icon = "camera-retro"
   icon_pack = "fa fa-music"
   name = "Dance and Music"
-  description = "90%"
 +++
