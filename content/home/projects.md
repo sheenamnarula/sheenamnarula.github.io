@@ -74,98 +74,119 @@ subtitle = ""
  css_class = ""
 +++
 
-### Project #1: IOT
-Currently working on a IOT project in which devices need to be controlled with voice commands.
-
-- Hardware : Raspberry pi and arduino(for testing)
-- Programming Language : Python
-- Third party apis : Google apis or snowboy(both can be used according to requirement)
+## Ecommerce Platform
+This is a product for a renowned fashion brand in Singapore which is having offline stores and online website for women clothes.
+#### Technology Stack
+NodeJS, NestJS, AWS Clouds Services (S3, SQS, Lambda), Docker, Kubernetes, Gitlab CI/CD, Slack Integration, Elasticsearch
 
 ##### Job roles and responsibilities:
+```
+. Architecture design and flow of the project.
+. Acted as an Engineering Manager for the team
+. Implementation of apis and migrating the existing one for performance improvement
+. Implementation of authentication using KONG 
+. Integration of Redis cache
+. Dockerization of the project
+. CI/CD pipelines for automating deployment
+. Troubleshooting on EKS (in case devops are not available to support the team)
+. SQS integrations and handling of failures in message processing
+. Creating and updating Route53
+```
+--------------------
+## Smart Conference Room 
 
-    • Working as a technical lead and handling a team.
-    • Imparting training of modules as per required by project.
-    • Analysing requirements and developing accordingly for customer satisfaction.
+This is a combination of Speech technology and IOT (Internet of Things) together. In this project, a conference room is made smart by deriving a meeting end to end through voice. In this project, following devices and applications were controlled through voice:
+- Projector (integrated using IOT and Embedded concepts) 
+- Lights (using IOT and Embedded concepts)
+- PDF reader (For Presentation) 
+- VLC media player (To play a video)
 
-
-### Project #2: FortressIQ
-
-This platform helps the new digital workforce thrive within the enterprise, addressing the scale problems endemic to automation platforms today, and the security, compliance and data problems that stifle their adoption
-
-- PLATFORM: Linux
-- FRAMEWORK: Express js
-- LANGUAGES: Node js with Graphql
-- TOOLS: Git
-- DATABASE: PostgreSQL
-
-##### Job roles and responsibilities:
-
-    • Helped in designing backend architecture.
-    • Implementation of backend architecture
-    • Development of APIs in graphql.
-    • Transforming the data collected from the end-user and storing
-      it in the required format.
-    • Further, the saved data is exported in excel files to be used
-      for machine learning purposes.
-
-### Project #3: Veriown
-
-This is bringing internet-connected solar energy to the 1.2 billion people around the world without access to a power grid. With visionary program to supply electricity, light, and internet, with access to online education, entertainment, and commerce all from a single device, it is providing the miracles and benefits of the 21st century to everyone, everywhere.
-
-- LANGUAGES: Node js with Graphql
-- FRAMEWORK: Express
-- DATABASE: Mongo db
-- ORM: Mongoose
+#### Technology Stack
+Python, Embedded C, Arduino and Nodemcu (Hardware), Dialog flow Api provided by Google, Snowboy
 
 ##### Job roles and responsibilities:
+```
+    . Technically lead the project
+    . Trained resources on IOT concepts
+    . Integrated Snow boy for detection purposes
+    . Integrated Dialog flow api for intent detection and streaming of voice
+    . Decoded projector commands so that can be further coded in the required way
+    . Worked on IR and Nodemcu to control the projector
+```
+----------------------------
+    
+## Synthetic Data Framework
 
-    • Worked as a  backend developer for veriown cloud
-    • Developed the Error handling module so that end-user can
-      get an error in a suitable format.
-    • Implemented Encryption and Decryption of customer data for
-      security purposes.
-### Project #4: NOMIS
+This project was about the generation of data (screenshots and corresponding Json) for the training purpose of Machine learning models.
+
+#### Technology Stack
+NodeJS, Express, for storage used GCS Buckets, Docker
+
+##### Job roles and responsibilities:
+```
+    . Technically lead the team
+    . Architecture design and flow of project
+    . Handled backend completely 
+    . Implementation of templating engine in right way
+    . Containerization of the application
+    . Scaling of application
+```
+--------------------------------
+## K-LITE
+
+This project is to visualize the Machine learning data in filtered form as we do in Kibana, but along with other interesting features as well like drawing bounding boxes to label data in real time.
+
+#### Technology Stack
+NodeJS, Graphql, HapiJS, Elasticsearch, for storage supported 3 platforms AWS, GCS, AZURE, Kubernetes, Docker, ReactJS (Frontend)
+
+##### Job roles and responsibilities:
+```
+    . Technically lead the team
+    . Handled backend completely and designed the architecture of the project
+    . Supporting in frontend issues (In case of Production)
+    . Containerization of the application
+    . Set up to automate the deployment process
+```
+
+-------------------------
+## Banking Sector
 
 This tool is used to manage the loan specifications. At some places, like in Canada , loan interest rates are not predefined.These are calculated on the basis of earnings and expenditure of a person who is applying loan. Basically.a person can bargain for loan interest rate.So to manage all these things, this tool has some formula which can calculate interests and keeps record of every bargain and also about interest rates provided by competitor parties so that manager can see all the record at one place and can approve or reject loan.
 
-- PLATFORM: Linux (Ubuntu)
-- FRAMEWORKS: Meteor
-- TOOLS: Git, JIRA
-- DATABASE: Mongo db
-
+#### Technology Stack
+NodeJS
 ##### Job roles and responsibilities:
+```
     • Worked as a Backend developer.
     • Migration of APIs from meteor to node.
+```
+-------------------
+## Samarthya
 
-### Project #5: Samarthya
-
-This project is an employment portal where any person can register and upload his work to showcase and can get employment.
+The project was an employment portal where skilled workers can come and register as a job seeker and employers can search for the workers on the basis of the work showcased by the job 
 This project has two parts
-1)One is for Candidate
-2)Second is for Employer
 
-- PLATFORM: Linux
-- FRAMEWORKS: Express
-- LANGUAGES: Nodejs
-- ORM : Mongoose
-- DATABASE: Mongo db, Neo4j
-- FRONTEND: Angular 2
 
+#### Technology Stack
+NodeJS, MongoDB, Email Integration
 ##### Job roles and responsibilities:
-
+```
     • Worked as a backend developer.
     • Email Integration using nodemailer.
     • Stripe integration for the subscription of premium accounts.
     • Twilio integration for SMS notifications.
-    
-### Project #6: Cheforder
+  ```
+ --------------------
+## Cheforder
 
 The project was a catering app where a customer can pre book a chef or caterer.Chefs can register and can easily get orders.
 
-- FRAMEWORKS: Meteor
-- DATABASE: Mongo db
+
+#### Technology Stack
+MeteorJS, MongoDB, Twilio for SMS, Stripe (Payment Gateway)
 
 ##### Job roles and responsibilities:
+```
     • Worked as a backend developer.
     • Implemeted all crud operations along with required flow of application.
     • Email Integration.
@@ -173,57 +194,51 @@ The project was a catering app where a customer can pre book a chef or caterer.C
     • Twilio integration for SMS notifications.
     • Fcm-node integration for mobile notifications
     • Implemented logic for cron jobs for ontime auto credit of payments.
-
-### Project #7: Konnect
+```
+----------------
+## Konnect
 
 This project was mainly Uber like in technical implementation but this is to book car cleaners and services.In this project, customer role is there to book cleaners. But car cleaners can be manager and can hire further persons for work.For this purpose, a management portal was also a part of this project.
 
-- FRAMEWORKS: Nodejs(express) with graphql
-- TOOLS: GIT
-- DATABASE: Mongo db
-
+#### Technology Stack
+Nodejs, Graphql, MongoDB
 ##### Job roles and responsibilities:
-
+```
     • Managed a small team of interns who were learning graphql.
     • Worked as a backend developer.
     • Implemented graphql subscriptions for real-time requests for the services
       to the agents.
-    • Suggested and Introduced manager role to client.
     • Integrated Stripe for online payments.
     • Integrated apis for management portal using redux architecture in react.
+```
+------------------
 
+## Brang
 
-### Project #8: Brang
+It was an app like Olx where customers can post pics of articles. They can act as sellers and buyers both.
+#### Technology Stack
+Nodejs, MongoDB, Mango pay 
 
-It was an app like Olx where customers can post pics of articles and rent these out to other users.
-
-- FRAMEWORKS: Nodejs(express) with graphql
-- TOOLS: GIT
-- DATABASE: Mongo db
 
 ##### Job roles and responsibilities:
-
+```
     • Worked as a backend developer
-    • Mango pay integration for payment.
     • Developed custom subscription module for auto-payment as mango pay does
       not support subscriptions.
+```
+--------------------
+## Node Cli
 
-### Project #9: Labletone
+This project is about offering cli commands so that a non-technical person can come to an instance and up the project using one command. (before we use auto-deployment)
+#### Technology Stack
+Nodejs
 
-It was an app where artists can register and showcase their songs. Music companies can listen to the songs uploaded by artists and can hire them.
-
-- FRAMEWORKS: Nodejs(Hapi) with graphql
-- TOOLS: GIT
-- DATABASE: Mongo db
-- ORM: Mongoose
 
 ##### Job roles and responsibilities:
+```
+    . Development of scripts which can run and deploy project on instance.
 
-    • Worked as a backend developer
-    • DocuSign API integration to sign the contract between company and artist
-    • Implemented all crud operations along with required Email integration using sendgrid.
-    • Worked on Desktop notifications.
-    • Stripe integration for payment.
+```
 
 
 

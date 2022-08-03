@@ -58,10 +58,6 @@ user_groups = ["Researchers", "Visitors"]
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "mailto:sheenamnarula1993@gmail.com".
 
-[[social]]
-  icon = "github"
-  icon_pack = "fab"
-  link = "https://github.com/sheenamnarula"
 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
@@ -72,6 +68,6 @@ user_groups = ["Researchers", "Visitors"]
 
 +++
 
-This is my website that is a bit copy of me. I am a Software Engineer possessing experience of 3 years as a backend developer(Node js).
+This is my website that is a bit copy of me. I am a Senior Software Engineer possessing experience of 6 years as a backend developer(Node js).
 
-Being from Electronics backround, I do have a decent knowledge of Electronics fundamentals and would love to go for IOT projects.
+Being from Electronics backround, I do have a decent knowledge of Electronics fundamentals and would love to go for IOT projects as well.

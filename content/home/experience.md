@@ -17,13 +17,23 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+
 [[experience]]
-  title = "Software Engineer"
+  title = "Senior Software Engineer (Acted as Engineering Manager)"
+  company = "Love Bonito"
+  company_url = "https://www.lovebonito.com"
+  location = "Singapore"
+  date_start = "2021-11-03"
+  date_end = "2022-07-23"
+  # description = """I worked here as a Senior Software Engineer thereby acting as an Engineering Manager for the team. """
+
+[[experience]]
+  title = "Senior Software Engineer"
   company = "Trantor"
   company_url = "https://trantorinc.com/"
   location = "Chandigarh"
   date_start = "2019-01-28"
-  date_end = ""
+  date_end = "2021-11-02"
   description = """
   """
   # Responsibilities include:
